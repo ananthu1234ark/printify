@@ -2,7 +2,6 @@
   <div class="min-h-screen bg-white overflow-hidden">
     <!-- Navigation -->
     <nav 
-      ref="nav"
       class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-500"
       :class="{ 'shadow-lg py-2': scrolled, 'py-4': !scrolled }"
     >
@@ -29,7 +28,7 @@
           </a>
         </div>
         
-        <!-- Updated Get Quote Button with WhatsApp Link -->
+        <!-- Get Quote Button with WhatsApp Link -->
         <a 
           :href="contactInfo.whatsapp" 
           target="_blank"
@@ -52,33 +51,21 @@
           <div class="lg:w-1/2 mb-12 lg:mb-0">
             <div class="relative">
               <!-- Animated badge -->
-              <div 
-                ref="badge"
-                class="inline-flex items-center px-4 py-2 bg-red-100 text-red-700 rounded-full font-medium mb-6 shadow-sm opacity-0"
-              >
+              <div class="inline-flex items-center px-4 py-2 bg-red-100 text-red-700 rounded-full font-medium mb-6 shadow-sm animate-fade-in-up">
                 <span class="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse"></span>
                 Premium Printing Services in Marad, Kochi
               </div>
               
-              <h1 
-                ref="heroTitle"
-                class="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 leading-tight opacity-0"
-              >
+              <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in-up animation-delay-100">
                 Your Vision, 
                 <span class="text-gradient">Printed Perfectly</span>
               </h1>
               
-              <p 
-                ref="heroText"
-                class="text-xl text-gray-600 mb-8 max-w-lg opacity-0"
-              >
+              <p class="text-xl text-gray-600 mb-8 max-w-lg animate-fade-in-up animation-delay-200">
                 From business cards to large format flex prints, we bring your ideas to life with exceptional quality and attention to detail.
               </p>
               
-              <div 
-                ref="heroButtons"
-                class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 opacity-0"
-              >
+              <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-up animation-delay-300">
                 <a 
                   href="#services"
                   class="px-8 py-3.5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center"
@@ -100,10 +87,7 @@
           <div class="lg:w-1/2 relative">
             <div class="relative h-96 lg:h-[500px]">
               <!-- Floating elements -->
-              <div 
-                ref="floatingCard"
-                class="absolute top-10 left-4 lg:left-10 w-40 h-52 bg-white rounded-xl shadow-2xl transform -rotate-6 border-2 border-red-100 opacity-0"
-              >
+              <div class="absolute top-10 left-4 lg:left-10 w-40 h-52 bg-white rounded-xl shadow-2xl transform -rotate-6 border-2 border-red-100 animate-float animation-delay-400">
                 <div class="h-full flex items-center justify-center p-4">
                   <div class="text-center">
                     <i class="fas fa-id-card text-3xl text-red-600 mb-3"></i>
@@ -112,10 +96,7 @@
                 </div>
               </div>
               
-              <div 
-                ref="floatingMug"
-                class="absolute top-20 right-4 lg:right-10 w-32 h-32 bg-white rounded-full shadow-2xl transform rotate-12 border-2 border-red-100 opacity-0"
-              >
+              <div class="absolute top-20 right-4 lg:right-10 w-32 h-32 bg-white rounded-full shadow-2xl transform rotate-12 border-2 border-red-100 animate-float animation-delay-500">
                 <div class="h-full flex items-center justify-center">
                   <div class="text-center">
                     <i class="fas fa-mug-hot text-2xl text-red-600"></i>
@@ -123,10 +104,7 @@
                 </div>
               </div>
               
-              <div 
-                ref="floatingCloth"
-                class="absolute bottom-20 left-8 lg:left-16 w-36 h-36 bg-white rounded-xl shadow-2xl transform rotate-3 border-2 border-red-100 opacity-0"
-              >
+              <div class="absolute bottom-20 left-8 lg:left-16 w-36 h-36 bg-white rounded-xl shadow-2xl transform rotate-3 border-2 border-red-100 animate-float animation-delay-600">
                 <div class="h-full flex items-center justify-center">
                   <div class="text-center">
                     <i class="fas fa-tshirt text-2xl text-red-600 mb-2"></i>
@@ -135,10 +113,7 @@
                 </div>
               </div>
               
-              <div 
-                ref="floatingLaser"
-                class="absolute bottom-10 right-8 lg:right-16 w-44 h-24 bg-white rounded-xl shadow-2xl transform -rotate-6 border-2 border-red-100 opacity-0"
-              >
+              <div class="absolute bottom-10 right-8 lg:right-16 w-44 h-24 bg-white rounded-xl shadow-2xl transform -rotate-6 border-2 border-red-100 animate-float animation-delay-700">
                 <div class="h-full flex items-center justify-center">
                   <div class="text-center">
                     <i class="fas fa-bolt text-2xl text-red-600 mb-1"></i>
@@ -156,16 +131,16 @@
     <section id="services" class="py-20 bg-gradient-to-b from-white to-red-50 relative overflow-hidden">
       <div class="container mx-auto px-4 relative z-10">
         <div class="text-center mb-16">
-          <h2 ref="servicesTitle" class="text-4xl font-bold text-gray-900 mb-4 opacity-0">Our Printing Services</h2>
-          <p ref="servicesSubtitle" class="text-xl text-gray-600 max-w-2xl mx-auto opacity-0">We offer a comprehensive range of printing solutions for all your needs</p>
+          <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up scroll-trigger">Our Printing Services</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-up scroll-trigger animation-delay-100">We offer a comprehensive range of printing solutions for all your needs</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div 
             v-for="(service, index) in services" 
             :key="index" 
-            :ref="el => { if (el) serviceCards[index] = el }"
-            class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 group overflow-hidden relative opacity-0"
+            class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 group overflow-hidden relative animate-fade-in-up scroll-trigger"
+            :class="`animation-delay-${(index % 3) * 100 + 200}`"
           >
             <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6 relative z-10" 
                  :class="service.color">
@@ -189,26 +164,26 @@
     <section id="portfolio" class="py-20 bg-white relative overflow-hidden">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Portfolio</h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">See examples of our recent work and printing projects</p>
+          <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up scroll-trigger">Our Portfolio</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-up scroll-trigger animation-delay-100">See examples of our recent work and printing projects</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center">
+          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center animate-fade-in-up scroll-trigger animation-delay-200">
             <div class="text-center p-4">
               <i class="fas fa-images text-4xl text-red-600 mb-3"></i>
               <p class="font-semibold text-gray-700">Project Gallery</p>
               <p class="text-gray-500 text-sm mt-2">Coming Soon</p>
             </div>
           </div>
-          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center">
+          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center animate-fade-in-up scroll-trigger animation-delay-300">
             <div class="text-center p-4">
               <i class="fas fa-id-card text-4xl text-red-600 mb-3"></i>
               <p class="font-semibold text-gray-700">Business Cards</p>
               <p class="text-gray-500 text-sm mt-2">Premium Quality</p>
             </div>
           </div>
-          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center">
+          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center animate-fade-in-up scroll-trigger animation-delay-400">
             <div class="text-center p-4">
               <i class="fas fa-tshirt text-4xl text-red-600 mb-3"></i>
               <p class="font-semibold text-gray-700">Cloth Printing</p>
@@ -224,14 +199,14 @@
       <div class="container mx-auto px-4">
         <div class="flex flex-col lg:flex-row items-center gap-12">
           <div class="lg:w-1/2">
-            <h2 ref="aboutTitle" class="text-4xl font-bold text-gray-900 mb-6 opacity-0">About Printify</h2>
-            <p ref="aboutText1" class="text-lg text-gray-600 mb-4 opacity-0">
+            <h2 class="text-4xl font-bold text-gray-900 mb-6 animate-fade-in-up scroll-trigger">About Printify</h2>
+            <p class="text-lg text-gray-600 mb-4 animate-fade-in-up scroll-trigger animation-delay-100">
               Printify is your trusted printing partner in Marad, Kochi, with years of experience in delivering high-quality printing solutions for businesses and individuals alike.
             </p>
-            <p ref="aboutText2" class="text-lg text-gray-600 mb-6 opacity-0">
+            <p class="text-lg text-gray-600 mb-6 animate-fade-in-up scroll-trigger animation-delay-200">
               We specialize in a wide range of printing services including flex printing, business cards, cloth printing, mug printing, and laser printing. Our commitment to quality, attention to detail, and customer satisfaction sets us apart in the industry.
             </p>
-            <div ref="aboutFeatures" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 opacity-0">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 animate-fade-in-up scroll-trigger animation-delay-300">
               <div class="flex items-center">
                 <i class="fas fa-check-circle text-red-600 mr-3"></i>
                 <span class="text-gray-700">Premium Quality Materials</span>
@@ -249,7 +224,7 @@
                 <span class="text-gray-700">Expert Design Assistance</span>
               </div>
             </div>
-            <div ref="aboutCta" class="opacity-0">
+            <div class="animate-fade-in-up scroll-trigger animation-delay-400">
               <a 
                 href="#contact" 
                 class="px-6 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 inline-block"
@@ -259,7 +234,7 @@
             </div>
           </div>
           <div class="lg:w-1/2">
-            <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-red-50 to-red-100 h-96 flex items-center justify-center">
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-red-50 to-red-100 h-96 flex items-center justify-center animate-fade-in-up scroll-trigger animation-delay-500">
               <div class="text-center p-8">
                 <i class="fas fa-print text-6xl text-red-600 mb-4"></i>
                 <h3 class="text-2xl font-bold text-gray-900 mb-2">Our Printing Facility</h3>
@@ -275,18 +250,18 @@
     <section id="contact" class="py-20 bg-gradient-to-b from-red-50 to-white relative overflow-hidden">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 ref="contactTitle" class="text-4xl font-bold text-gray-900 mb-4 opacity-0">Contact Printify</h2>
-          <p ref="contactSubtitle" class="text-xl text-gray-600 max-w-2xl mx-auto opacity-0">Get in touch with us for all your printing needs in Kochi</p>
+          <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up scroll-trigger">Contact Printify</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-up scroll-trigger animation-delay-100">Get in touch with us for all your printing needs in Kochi</p>
         </div>
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <!-- Contact Information -->
           <div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 animate-fade-in-up scroll-trigger">Get In Touch</h3>
             
             <div class="space-y-6">
               <!-- Email -->
-              <div class="flex items-start">
+              <div class="flex items-start animate-fade-in-up scroll-trigger animation-delay-200">
                 <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0">
                   <i class="fas fa-envelope text-red-600"></i>
                 </div>
@@ -303,7 +278,7 @@
               </div>
               
               <!-- Phone -->
-              <div class="flex items-start">
+              <div class="flex items-start animate-fade-in-up scroll-trigger animation-delay-300">
                 <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0">
                   <i class="fas fa-phone text-red-600"></i>
                 </div>
@@ -320,7 +295,7 @@
               </div>
               
               <!-- WhatsApp -->
-              <div class="flex items-start">
+              <div class="flex items-start animate-fade-in-up scroll-trigger animation-delay-400">
                 <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0">
                   <i class="fab fa-whatsapp text-red-600"></i>
                 </div>
@@ -338,7 +313,7 @@
               </div>
               
               <!-- Address -->
-              <div class="flex items-start">
+              <div class="flex items-start animate-fade-in-up scroll-trigger animation-delay-500">
                 <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0">
                   <i class="fas fa-map-marker-alt text-red-600"></i>
                 </div>
@@ -357,7 +332,7 @@
             </div>
             
             <!-- Social Media -->
-            <div class="mt-8">
+            <div class="mt-8 animate-fade-in-up scroll-trigger animation-delay-600">
               <h4 class="font-semibold text-gray-900 mb-4">Follow Us</h4>
               <div class="flex space-x-4">
                 <a 
@@ -375,7 +350,7 @@
           </div>
           
           <!-- Map -->
-          <div class="rounded-2xl overflow-hidden shadow-xl h-96">
+          <div class="rounded-2xl overflow-hidden shadow-xl h-96 animate-fade-in-up scroll-trigger animation-delay-300">
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.129007575663!2d76.32299027495682!3d9.938886100000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0873d7cc22ea2b%3A0x9c9b6b8b6b8b6b8b!2sPrintify!5e0!3m2!1sen!2sin!4v1698765432100!5m2!1sen!2sin" 
               width="100%" 
@@ -394,9 +369,9 @@
     <!-- CTA Section -->
     <section class="py-20 bg-gradient-to-r from-red-600 to-red-800 text-white relative overflow-hidden">
       <div class="container mx-auto px-4 text-center relative z-10">
-        <h2 ref="ctaTitle" class="text-4xl font-bold mb-6 opacity-0">Ready to Bring Your Ideas to Life?</h2>
-        <p ref="ctaText" class="text-xl mb-8 max-w-2xl mx-auto opacity-90 opacity-0">Contact us today for a free quote on your next printing project</p>
-        <div ref="ctaButtons" class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 opacity-0">
+        <h2 class="text-4xl font-bold mb-6 animate-fade-in-up scroll-trigger">Ready to Bring Your Ideas to Life?</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90 animate-fade-in-up scroll-trigger animation-delay-100">Contact us today for a free quote on your next printing project</p>
+        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-up scroll-trigger animation-delay-200">
           <a 
             :href="contactInfo.whatsapp" 
             target="_blank"
@@ -482,39 +457,9 @@
   </div>
 </template>
 
-
-
 <script setup>
 // ✅ Import ref and onMounted from Vue
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-
-// ✅ Client-side only GSAP imports (will be loaded dynamically)
-let gsap = null
-let ScrollTrigger = null
-
-// ✅ Refs
-const nav = ref(null)
-const badge = ref(null)
-const heroTitle = ref(null)
-const heroText = ref(null)
-const heroButtons = ref(null)
-const floatingCard = ref(null)
-const floatingMug = ref(null)
-const floatingCloth = ref(null)
-const floatingLaser = ref(null)
-const servicesTitle = ref(null)
-const servicesSubtitle = ref(null)
-const serviceCards = ref([])
-const aboutTitle = ref(null)
-const aboutText1 = ref(null)
-const aboutText2 = ref(null)
-const aboutFeatures = ref(null)
-const aboutCta = ref(null)
-const contactTitle = ref(null)
-const contactSubtitle = ref(null)
-const ctaTitle = ref(null)
-const ctaText = ref(null)
-const ctaButtons = ref(null)
 
 // ✅ State
 const scrolled = ref(false)
@@ -637,157 +582,42 @@ useHead({
 const handleScroll = () => {
   if (process.client) {
     scrolled.value = window.scrollY > 50
-  }
-}
-
-// ✅ GSAP Animations - Client only
-const initAnimations = () => {
-  // Check if we're on client side and GSAP is loaded
-  if (!process.client || !gsap || !ScrollTrigger) {
-    console.warn('GSAP not available for animations')
-    return
-  }
-
-  // Hero animations
-  if (badge.value && heroTitle.value && heroText.value && heroButtons.value) {
-    const heroTl = gsap.timeline()
-
-    heroTl
-      .to(badge.value, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' })
-      .to(heroTitle.value, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, '-=0.5')
-      .to(heroText.value, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.7')
-      .to(heroButtons.value, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.5')
-  }
-
-  // Floating elements animations
-  const floatItems = [
-    { el: floatingCard, delay: 1 },
-    { el: floatingMug, delay: 1.2 },
-    { el: floatingCloth, delay: 1.4 },
-    { el: floatingLaser, delay: 1.6 }
-  ]
-
-  floatItems.forEach(({ el, delay }) => {
-    if (el.value) {
-      gsap.to(el.value, {
-        opacity: 1,
-        y: -10,
-        duration: 1.5,
-        ease: 'power2.out',
-        delay
-      })
-    }
-  })
-
-  // Continuous floating loop
-  const floatingElements = [
-    floatingCard.value,
-    floatingMug.value, 
-    floatingCloth.value,
-    floatingLaser.value
-  ].filter(el => el !== null)
-
-  if (floatingElements.length > 0) {
-    gsap.to(floatingElements, {
-      y: '+=10',
-      rotation: '+=2',
-      duration: 2,
-      repeat: -1,
-      yoyo: true,
-      ease: 'sine.inOut'
+    
+    // Trigger scroll animations
+    const scrollTriggers = document.querySelectorAll('.scroll-trigger')
+    scrollTriggers.forEach(element => {
+      const elementTop = element.getBoundingClientRect().top
+      const elementVisible = 150
+      
+      if (elementTop < window.innerHeight - elementVisible) {
+        element.classList.add('animate-scroll-trigger')
+      }
     })
   }
-
-  // Scroll-triggered animations
-  const fadeUp = (el, delay = 0) => {
-    if (el && ScrollTrigger) {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          delay,
-          ease: 'power2.out',
-          scrollTrigger: { 
-            trigger: el, 
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      )
-    }
-  }
-
-  // Apply fade-up animations to elements
-  if (servicesTitle.value) fadeUp(servicesTitle.value)
-  if (servicesSubtitle.value) fadeUp(servicesSubtitle.value)
-  
-  serviceCards.value.forEach((card, i) => {
-    if (card) fadeUp(card, i * 0.1)
-  })
-  
-  if (aboutTitle.value) fadeUp(aboutTitle.value)
-  if (aboutText1.value) fadeUp(aboutText1.value)
-  if (aboutText2.value) fadeUp(aboutText2.value)
-  if (aboutFeatures.value) fadeUp(aboutFeatures.value)
-  if (aboutCta.value) fadeUp(aboutCta.value)
-  if (contactTitle.value) fadeUp(contactTitle.value)
-  if (contactSubtitle.value) fadeUp(contactSubtitle.value)
-  if (ctaTitle.value) fadeUp(ctaTitle.value)
-  if (ctaText.value) fadeUp(ctaText.value)
-  if (ctaButtons.value) fadeUp(ctaButtons.value)
-}
-
-// ✅ Load GSAP dynamically only on client
-const loadGSAP = async () => {
-  if (process.client) {
-    try {
-      // Dynamically import GSAP
-      const gsapModule = await import('gsap')
-      const scrollTriggerModule = await import('gsap/ScrollTrigger')
-      
-      gsap = gsapModule.default
-      ScrollTrigger = scrollTriggerModule.default
-      
-      // Register ScrollTrigger plugin
-      gsap.registerPlugin(ScrollTrigger)
-      
-      console.log('GSAP loaded successfully')
-      return true
-    } catch (error) {
-      console.error('Failed to load GSAP:', error)
-      return false
-    }
-  }
-  return false
 }
 
 // ✅ Lifecycle Hooks
-onMounted(async () => {
+onMounted(() => {
   // Only run on client side
   if (process.client) {
-    // Load GSAP first
-    const gsapLoaded = await loadGSAP()
-    
     // Set up scroll listener
     window.addEventListener('scroll', handleScroll, { passive: true })
     
-    // Initialize animations if GSAP loaded successfully
-    if (gsapLoaded) {
-      // Small delay to ensure DOM is fully ready
-      setTimeout(() => {
-        initAnimations()
-      }, 100)
-    } else {
-      // Fallback: Simple fade-in if GSAP fails
-      document.querySelectorAll('.opacity-0').forEach(el => {
-        el.classList.remove('opacity-0')
-        el.classList.add('opacity-100', 'transition-opacity', 'duration-500')
+    // Trigger initial scroll check
+    handleScroll()
+    
+    // Add scroll-trigger class to elements that should animate on scroll
+    setTimeout(() => {
+      const scrollTriggers = document.querySelectorAll('.scroll-trigger')
+      scrollTriggers.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top
+        const elementVisible = 150
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('animate-scroll-trigger')
+        }
       })
-    }
+    }, 100)
   }
 })
 
@@ -795,20 +625,8 @@ onBeforeUnmount(() => {
   // Clean up event listeners
   if (process.client) {
     window.removeEventListener('scroll', handleScroll)
-    
-    // Kill all GSAP animations
-    if (ScrollTrigger) {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
   }
 })
-
-// ✅ Service card ref setter
-const setServiceCardRef = (el, index) => {
-  if (el && serviceCards.value) {
-    serviceCards.value[index] = el
-  }
-}
 </script>
 
 <style scoped>
@@ -816,5 +634,74 @@ const setServiceCardRef = (el, index) => {
   background: linear-gradient(to right, #dc2626, #7f1d1d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Custom animations using Tailwind */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--tw-rotate, 0));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--tw-rotate, 0));
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-700 {
+  animation-delay: 700ms;
+}
+
+/* Scroll trigger animation */
+.scroll-trigger {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-scroll-trigger {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
