@@ -7,10 +7,7 @@
     >
       <div class="container mx-auto px-4 flex justify-between items-center">
         <div class="flex items-center space-x-3">
-          <div class="w-12 h-12 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center shadow-lg">
-            <i class="fas fa-print text-white text-lg"></i>
-          </div>
-          <h1 class="text-2xl font-bold text-gray-900">Printify</h1>
+           <img src="/png.png" alt="My Image" class="w-[150px]" />
         </div>
         
         <!-- Desktop Navigation -->
@@ -446,10 +443,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div class="md:col-span-2 animate-fade-in-up">
             <div class="flex items-center space-x-3 mb-4">
-              <div class="w-12 h-12 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center shadow-lg">
-                <i class="fas fa-print text-white text-lg"></i>
-              </div>
-              <h3 class="text-xl font-bold">Printify</h3>
+              <img src="/png.png" alt="My Image" class="w-[300px]" />
             </div>
             <p class="text-gray-400 mb-4 max-w-md">
               Your trusted printing partner in Marad, Kochi. We provide high-quality printing services with attention to detail and customer satisfaction.
