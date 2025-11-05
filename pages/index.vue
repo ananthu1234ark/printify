@@ -29,9 +29,15 @@
           </a>
         </div>
         
-        <button class="px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+        <!-- Updated Get Quote Button with WhatsApp Link -->
+        <a 
+          :href="contactInfo.whatsapp" 
+          target="_blank"
+          class="px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center"
+        >
+          <i class="fab fa-whatsapp mr-2"></i>
           Get Quote
-        </button>
+        </a>
         
         <button class="md:hidden text-gray-700" @click="mobileMenuOpen = !mobileMenuOpen" aria-label="Toggle mobile menu">
           <i class="fas fa-bars text-xl"></i>
@@ -73,14 +79,20 @@
                 ref="heroButtons"
                 class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 opacity-0"
               >
-                <button class="px-8 py-3.5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center">
+                <a 
+                  href="#services"
+                  class="px-8 py-3.5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center"
+                >
                   <span>Explore Services</span>
                   <i class="fas fa-arrow-right ml-2"></i>
-                </button>
-                <button class="px-8 py-3.5 bg-white text-gray-800 border border-gray-300 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center">
+                </a>
+                <a 
+                  href="#portfolio"
+                  class="px-8 py-3.5 bg-white text-gray-800 border border-gray-300 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+                >
                   <i class="fas fa-play-circle mr-2 text-red-600"></i>
                   <span>View Portfolio</span>
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -161,10 +173,47 @@
             </div>
             <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">{{ service.title }}</h3>
             <p class="text-gray-600 mb-4 relative z-10">{{ service.description }}</p>
-            <a href="#" class="text-red-600 font-medium flex items-center group-hover:translate-x-1 transition-transform duration-300 relative z-10">
+            <a 
+              :href="service.link" 
+              class="text-red-600 font-medium flex items-center group-hover:translate-x-1 transition-transform duration-300 relative z-10"
+            >
               Learn more
               <i class="fas fa-arrow-right ml-1"></i>
             </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white relative overflow-hidden">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Portfolio</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">See examples of our recent work and printing projects</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center">
+            <div class="text-center p-4">
+              <i class="fas fa-images text-4xl text-red-600 mb-3"></i>
+              <p class="font-semibold text-gray-700">Project Gallery</p>
+              <p class="text-gray-500 text-sm mt-2">Coming Soon</p>
+            </div>
+          </div>
+          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center">
+            <div class="text-center p-4">
+              <i class="fas fa-id-card text-4xl text-red-600 mb-3"></i>
+              <p class="font-semibold text-gray-700">Business Cards</p>
+              <p class="text-gray-500 text-sm mt-2">Premium Quality</p>
+            </div>
+          </div>
+          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center">
+            <div class="text-center p-4">
+              <i class="fas fa-tshirt text-4xl text-red-600 mb-3"></i>
+              <p class="font-semibold text-gray-700">Cloth Printing</p>
+              <p class="text-gray-500 text-sm mt-2">Custom Designs</p>
+            </div>
           </div>
         </div>
       </div>
@@ -201,9 +250,12 @@
               </div>
             </div>
             <div ref="aboutCta" class="opacity-0">
-              <button class="px-6 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+              <a 
+                href="#contact" 
+                class="px-6 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 inline-block"
+              >
                 Learn More About Us
-              </button>
+              </a>
             </div>
           </div>
           <div class="lg:w-1/2">
@@ -322,7 +374,7 @@
             </div>
           </div>
           
-                    <!-- Map -->
+          <!-- Map -->
           <div class="rounded-2xl overflow-hidden shadow-xl h-96">
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.129007575663!2d76.32299027495682!3d9.938886100000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0873d7cc22ea2b%3A0x9c9b6b8b6b8b6b8b!2sPrintify!5e0!3m2!1sen!2sin!4v1698765432100!5m2!1sen!2sin" 
@@ -345,12 +397,20 @@
         <h2 ref="ctaTitle" class="text-4xl font-bold mb-6 opacity-0">Ready to Bring Your Ideas to Life?</h2>
         <p ref="ctaText" class="text-xl mb-8 max-w-2xl mx-auto opacity-90 opacity-0">Contact us today for a free quote on your next printing project</p>
         <div ref="ctaButtons" class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 opacity-0">
-          <button class="px-8 py-3.5 bg-white text-red-600 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <a 
+            :href="contactInfo.whatsapp" 
+            target="_blank"
+            class="px-8 py-3.5 bg-white text-red-600 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 inline-block"
+          >
             Get Free Quote
-          </button>
-          <button class="px-8 py-3.5 bg-transparent border border-white text-white rounded-full font-medium hover:bg-white/10 transition-all duration-300">
+          </a>
+          <a 
+            :href="contactInfo.mapLink" 
+            target="_blank"
+            class="px-8 py-3.5 bg-transparent border border-white text-white rounded-full font-medium hover:bg-white/10 transition-all duration-300 inline-block"
+          >
             Visit Our Store
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -463,6 +523,7 @@ const mobileMenuOpen = ref(false)
 // Data
 const navItems = [
   { name: 'Services', href: '#services' },
+  { name: 'Portfolio', href: '#portfolio' },
   { name: 'About', href: '#about' },
   { name: 'Contact', href: '#contact' }
 ]
@@ -472,37 +533,43 @@ const services = [
     title: 'Flex Printing',
     description: 'High-quality large format flex printing for banners, hoardings, and signage.',
     icon: 'fas fa-scroll',
-    color: 'bg-gradient-to-br from-red-600 to-red-800'
+    color: 'bg-gradient-to-br from-red-600 to-red-800',
+    link: '#contact'
   },
   {
     title: 'Business Cards',
     description: 'Professionally designed and printed business cards that make a lasting impression.',
     icon: 'fas fa-id-card',
-    color: 'bg-gradient-to-br from-red-600 to-red-800'
+    color: 'bg-gradient-to-br from-red-600 to-red-800',
+    link: '#contact'
   },
   {
     title: 'Cloth Printing',
     description: 'Custom printing on various fabrics for uniforms, promotional items, and more.',
     icon: 'fas fa-tshirt',
-    color: 'bg-gradient-to-br from-red-600 to-red-800'
+    color: 'bg-gradient-to-br from-red-600 to-red-800',
+    link: '#contact'
   },
   {
     title: 'Mug Printing',
     description: 'Personalized mug printing perfect for gifts, promotions, and special occasions.',
     icon: 'fas fa-mug-hot',
-    color: 'bg-gradient-to-br from-red-600 to-red-800'
+    color: 'bg-gradient-to-br from-red-600 to-red-800',
+    link: '#contact'
   },
   {
     title: 'Laser Printing',
     description: 'Precision laser printing for documents, brochures, and high-quality prints.',
     icon: 'fas fa-bolt',
-    color: 'bg-gradient-to-br from-red-600 to-red-800'
+    color: 'bg-gradient-to-br from-red-600 to-red-800',
+    link: '#contact'
   },
   {
     title: 'Design Services',
     description: 'Creative design solutions to bring your ideas to life before printing.',
     icon: 'fas fa-palette',
-    color: 'bg-gradient-to-br from-red-600 to-red-800'
+    color: 'bg-gradient-to-br from-red-600 to-red-800',
+    link: '#contact'
   }
 ]
 
@@ -520,22 +587,27 @@ const socialMedia = [
   {
     name: 'Facebook',
     icon: 'fab fa-facebook-f',
-    link: '#'
+    link: 'https://facebook.com/printifykochi'
   },
   {
     name: 'Instagram',
     icon: 'fab fa-instagram',
-    link: '#'
+    link: 'https://instagram.com/printifykochi'
   },
   {
     name: 'Twitter',
     icon: 'fab fa-twitter',
-    link: '#'
+    link: 'https://twitter.com/printifykochi'
   },
   {
-    name: 'LinkedIn',
-    icon: 'fab fa-linkedin-in',
-    link: '#'
+    name: 'WhatsApp',
+    icon: 'fab fa-whatsapp',
+    link: 'https://wa.me/914324354554'
+  },
+  {
+    name: 'Email',
+    icon: 'fas fa-envelope',
+    link: 'mailto:Printifycochin@gmail.com'
   }
 ]
 
@@ -549,7 +621,6 @@ useSeoMeta({
   twitterCard: 'summary_large_image'
 })
 
-// Structured data for SEO
 // Structured data for SEO
 useHead({
   script: [
