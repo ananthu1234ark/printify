@@ -482,17 +482,19 @@
   </div>
 </template>
 
+
+
 <script setup>
-// Import GSAP
+// ✅ Import GSAP
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-// Register ScrollTrigger
+// ✅ Register ScrollTrigger (only on client)
 if (process.client) {
   gsap.registerPlugin(ScrollTrigger)
 }
 
-// Refs for GSAP animations
+// ✅ Refs
 const nav = ref(null)
 const badge = ref(null)
 const heroTitle = ref(null)
@@ -516,11 +518,11 @@ const ctaTitle = ref(null)
 const ctaText = ref(null)
 const ctaButtons = ref(null)
 
-// State
+// ✅ State
 const scrolled = ref(false)
 const mobileMenuOpen = ref(false)
 
-// Data
+// ✅ Data
 const navItems = [
   { name: 'Services', href: '#services' },
   { name: 'Portfolio', href: '#portfolio' },
@@ -579,39 +581,18 @@ const contactInfo = {
   phone: '+91 8129067610',
   whatsapp: 'https://wa.me/+918129067610',
   address: 'Marad, Kochi, Kerala, India - 682304',
-  mapLink: 'https://maps.app.goo.gl/7gVxi4LpEVajh84U8',
-  coordinates: 'W8QG+G8 Kochi, Kerala'
+  mapLink: 'https://maps.app.goo.gl/7gVxi4LpEVajh84U8'
 }
 
 const socialMedia = [
-  {
-    name: 'Facebook',
-    icon: 'fab fa-facebook-f',
-    link: 'https://facebook.com/printifykochi'
-  },
-  {
-    name: 'Instagram',
-    icon: 'fab fa-instagram',
-    link: 'https://instagram.com/printifykochi'
-  },
-  {
-    name: 'Twitter',
-    icon: 'fab fa-twitter',
-    link: 'https://twitter.com/printifykochi'
-  },
-  {
-    name: 'WhatsApp',
-    icon: 'fab fa-whatsapp',
-    link: 'https://wa.me/+918129067610'
-  },
-  {
-    name: 'Email',
-    icon: 'fas fa-envelope',
-    link: 'mailto:Printifycochin@gmail.com'
-  }
+  { name: 'Facebook', icon: 'fab fa-facebook-f', link: 'https://facebook.com/printifykochi' },
+  { name: 'Instagram', icon: 'fab fa-instagram', link: 'https://instagram.com/printifykochi' },
+  { name: 'Twitter', icon: 'fab fa-twitter', link: 'https://twitter.com/printifykochi' },
+  { name: 'WhatsApp', icon: 'fab fa-whatsapp', link: 'https://wa.me/+918129067610' },
+  { name: 'Email', icon: 'fas fa-envelope', link: 'mailto:Printifycochin@gmail.com' }
 ]
 
-// SEO Meta
+// ✅ SEO Meta
 useSeoMeta({
   title: 'Printify - Premium Printing Services in Marad, Kochi',
   description: 'Printify offers high-quality printing services in Marad, Kochi including flex printing, business cards, cloth printing, mug printing, and laser printing.',
@@ -621,7 +602,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image'
 })
 
-// Structured data for SEO
+// ✅ JSON-LD Structured Data
 useHead({
   script: [
     {
@@ -648,297 +629,105 @@ useHead({
           longitude: '76.3255651'
         },
         openingHours: 'Mo-Sa 09:00-19:00',
-        sameAs: socialMedia.map(social => social.link)
+        sameAs: socialMedia.map(s => s.link)
       })
     }
   ]
 })
 
-// Scroll handler
+// ✅ Scroll Handler
 const handleScroll = () => {
   scrolled.value = window.scrollY > 50
 }
 
-// GSAP Animations
+// ✅ GSAP Animations
 const initAnimations = () => {
-  // Hero section animations
+  // Hero
   const heroTl = gsap.timeline()
-  
+
   heroTl
-    .to(badge.value, {
+    .to(badge.value, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' })
+    .to(heroTitle.value, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, '-=0.5')
+    .to(heroText.value, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.7')
+    .to(heroButtons.value, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.5')
+
+  // Floating elements
+  const floatItems = [
+    { el: floatingCard, delay: 1 },
+    { el: floatingMug, delay: 1.2 },
+    { el: floatingCloth, delay: 1.4 },
+    { el: floatingLaser, delay: 1.6 }
+  ]
+
+  floatItems.forEach(({ el, delay }) => {
+    gsap.to(el.value, {
       opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: 'power2.out'
-    })
-    .to(heroTitle.value, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: 'power2.out'
-    }, '-=0.5')
-    .to(heroText.value, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: 'power2.out'
-    }, '-=0.7')
-    .to(heroButtons.value, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: 'power2.out'
-    }, '-=0.5')
-
-  // Floating elements animation
-  gsap.to(floatingCard.value, {
-    opacity: 1,
-    y: -10,
-    rotation: -3,
-    duration: 1.5,
-    ease: 'power2.out',
-    delay: 1
-  })
-
-  gsap.to(floatingMug.value, {
-    opacity: 1,
-    y: -15,
-    rotation: 8,
-    duration: 1.5,
-    ease: 'power2.out',
-    delay: 1.2
-  })
-
-  gsap.to(floatingCloth.value, {
-    opacity: 1,
-    y: -12,
-    rotation: 2,
-    duration: 1.5,
-    ease: 'power2.out',
-    delay: 1.4
-  })
-
-  gsap.to(floatingLaser.value, {
-    opacity: 1,
-    y: -8,
-    rotation: -4,
-    duration: 1.5,
-    ease: 'power2.out',
-    delay: 1.6
-  })
-
-  // Continuous floating animation
-  gsap.to([floatingCard.value, floatingMug.value, floatingCloth.value, floatingLaser.value], {
-    y: '+=10',
-    rotation: '+=2',
-    duration: 2,
-    repeat: -1,
-    yoyo: true,
-    ease: 'sine.inOut'
-  })
-
-  // Services section animations with ScrollTrigger
-  gsap.to(servicesTitle.value, {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: servicesTitle.value,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse'
-    }
-  })
-
-  gsap.to(servicesSubtitle.value, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: servicesSubtitle.value,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse'
-    }
-  })
-
-  serviceCards.value.forEach((card, index) => {
-    gsap.to(card, {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      delay: index * 0.1,
+      y: -10,
+      duration: 1.5,
       ease: 'power2.out',
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 85%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none reverse'
-      }
+      delay
     })
   })
 
-  // About section animations
-  gsap.to(aboutTitle.value, {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: aboutTitle.value,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse'
+  // Continuous floating loop
+  gsap.to(
+    [floatingCard.value, floatingMug.value, floatingCloth.value, floatingLaser.value],
+    {
+      y: '+=10',
+      rotation: '+=2',
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut'
     }
-  })
+  )
 
-  gsap.to(aboutText1.value, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: aboutText1.value,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse'
-    }
-  })
+  // Scroll-triggered section fades
+  const fadeUp = (el, delay = 0) => {
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 80%' }
+      }
+    )
+  }
 
-  gsap.to(aboutText2.value, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: aboutText2.value,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse'
-    }
-  })
-
-  gsap.to(aboutFeatures.value, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: aboutFeatures.value,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse'
-    }
-  })
-
-  gsap.to(aboutCta.value, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: aboutCta.value,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse'
-    }
-  })
-
-  // Contact section animations
-  gsap.to(contactTitle.value, {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: contactTitle.value,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse'
-    }
-  })
-
-  gsap.to(contactSubtitle.value, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: contactSubtitle.value,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse'
-    }
-  })
-
-  // CTA section animations
-  gsap.to(ctaTitle.value, {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: ctaTitle.value,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse'
-    }
-  })
-
-  gsap.to(ctaText.value, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: ctaText.value,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse'
-    }
-  })
-
-  gsap.to(ctaButtons.value, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: ctaButtons.value,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse'
-    }
-  })
+  fadeUp(servicesTitle.value)
+  fadeUp(servicesSubtitle.value)
+  serviceCards.value.forEach((card, i) => fadeUp(card, i * 0.1))
+  fadeUp(aboutTitle.value)
+  fadeUp(aboutText1.value)
+  fadeUp(aboutText2.value)
+  fadeUp(aboutFeatures.value)
+  fadeUp(aboutCta.value)
+  fadeUp(contactTitle.value)
+  fadeUp(contactSubtitle.value)
+  fadeUp(ctaTitle.value)
+  fadeUp(ctaText.value)
+  fadeUp(ctaButtons.value)
 }
 
+// ✅ Lifecycle Hooks
 onMounted(() => {
-  if (process.client) {
-    window.addEventListener('scroll', handleScroll)
-    // Initialize animations after a short delay to ensure DOM is ready
-    setTimeout(initAnimations, 100)
-  }
+  window.addEventListener('scroll', handleScroll)
+  initAnimations()
 })
 
-onUnmounted(() => {
-  if (process.client) {
-    window.removeEventListener('scroll', handleScroll)
-  }
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll)
 })
 </script>
 
 <style scoped>
 .text-gradient {
-  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  background: linear-gradient(to right, #dc2626, #7f1d1d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Custom scroll behavior */
-html {
-  scroll-behavior: smooth;
 }
 </style>
