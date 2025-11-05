@@ -51,21 +51,21 @@
           <div class="lg:w-1/2 mb-12 lg:mb-0">
             <div class="relative">
               <!-- Animated badge -->
-              <div class="inline-flex items-center px-4 py-2 bg-red-100 text-red-700 rounded-full font-medium mb-6 shadow-sm animate-fade-in-up">
+              <div class="inline-flex items-center px-4 py-2 bg-red-100 text-red-700 rounded-full font-medium mb-6 shadow-sm animate-fade-in">
                 <span class="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse"></span>
                 Premium Printing Services in Marad, Kochi
               </div>
               
-              <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in-up animation-delay-100">
+              <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in animate-delay-100">
                 Your Vision, 
                 <span class="text-gradient">Printed Perfectly</span>
               </h1>
               
-              <p class="text-xl text-gray-600 mb-8 max-w-lg animate-fade-in-up animation-delay-200">
+              <p class="text-xl text-gray-600 mb-8 max-w-lg animate-fade-in animate-delay-200">
                 From business cards to large format flex prints, we bring your ideas to life with exceptional quality and attention to detail.
               </p>
               
-              <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-up animation-delay-300">
+              <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in animate-delay-300">
                 <a 
                   href="#services"
                   class="px-8 py-3.5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center"
@@ -87,7 +87,7 @@
           <div class="lg:w-1/2 relative">
             <div class="relative h-96 lg:h-[500px]">
               <!-- Floating elements -->
-              <div class="absolute top-10 left-4 lg:left-10 w-40 h-52 bg-white rounded-xl shadow-2xl transform -rotate-6 border-2 border-red-100 animate-float animation-delay-400">
+              <div class="absolute top-10 left-4 lg:left-10 w-40 h-52 bg-white rounded-xl shadow-2xl transform -rotate-6 border-2 border-red-100 animate-float animate-delay-400">
                 <div class="h-full flex items-center justify-center p-4">
                   <div class="text-center">
                     <i class="fas fa-id-card text-3xl text-red-600 mb-3"></i>
@@ -96,7 +96,7 @@
                 </div>
               </div>
               
-              <div class="absolute top-20 right-4 lg:right-10 w-32 h-32 bg-white rounded-full shadow-2xl transform rotate-12 border-2 border-red-100 animate-float animation-delay-500">
+              <div class="absolute top-20 right-4 lg:right-10 w-32 h-32 bg-white rounded-full shadow-2xl transform rotate-12 border-2 border-red-100 animate-float animate-delay-500">
                 <div class="h-full flex items-center justify-center">
                   <div class="text-center">
                     <i class="fas fa-mug-hot text-2xl text-red-600"></i>
@@ -104,7 +104,7 @@
                 </div>
               </div>
               
-              <div class="absolute bottom-20 left-8 lg:left-16 w-36 h-36 bg-white rounded-xl shadow-2xl transform rotate-3 border-2 border-red-100 animate-float animation-delay-600">
+              <div class="absolute bottom-20 left-8 lg:left-16 w-36 h-36 bg-white rounded-xl shadow-2xl transform rotate-3 border-2 border-red-100 animate-float animate-delay-600">
                 <div class="h-full flex items-center justify-center">
                   <div class="text-center">
                     <i class="fas fa-tshirt text-2xl text-red-600 mb-2"></i>
@@ -113,7 +113,7 @@
                 </div>
               </div>
               
-              <div class="absolute bottom-10 right-8 lg:right-16 w-44 h-24 bg-white rounded-xl shadow-2xl transform -rotate-6 border-2 border-red-100 animate-float animation-delay-700">
+              <div class="absolute bottom-10 right-8 lg:right-16 w-44 h-24 bg-white rounded-xl shadow-2xl transform -rotate-6 border-2 border-red-100 animate-float animate-delay-700">
                 <div class="h-full flex items-center justify-center">
                   <div class="text-center">
                     <i class="fas fa-bolt text-2xl text-red-600 mb-1"></i>
@@ -131,16 +131,15 @@
     <section id="services" class="py-20 bg-gradient-to-b from-white to-red-50 relative overflow-hidden">
       <div class="container mx-auto px-4 relative z-10">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up scroll-trigger">Our Printing Services</h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-up scroll-trigger animation-delay-100">We offer a comprehensive range of printing solutions for all your needs</p>
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Printing Services</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">We offer a comprehensive range of printing solutions for all your needs</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div 
             v-for="(service, index) in services" 
             :key="index" 
-            class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 group overflow-hidden relative animate-fade-in-up scroll-trigger"
-            :class="`animation-delay-${(index % 3) * 100 + 200}`"
+            class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 group overflow-hidden relative"
           >
             <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6 relative z-10" 
                  :class="service.color">
@@ -164,26 +163,26 @@
     <section id="portfolio" class="py-20 bg-white relative overflow-hidden">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up scroll-trigger">Our Portfolio</h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-up scroll-trigger animation-delay-100">See examples of our recent work and printing projects</p>
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Portfolio</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">See examples of our recent work and printing projects</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center animate-fade-in-up scroll-trigger animation-delay-200">
+          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center">
             <div class="text-center p-4">
               <i class="fas fa-images text-4xl text-red-600 mb-3"></i>
               <p class="font-semibold text-gray-700">Project Gallery</p>
               <p class="text-gray-500 text-sm mt-2">Coming Soon</p>
             </div>
           </div>
-          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center animate-fade-in-up scroll-trigger animation-delay-300">
+          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center">
             <div class="text-center p-4">
               <i class="fas fa-id-card text-4xl text-red-600 mb-3"></i>
               <p class="font-semibold text-gray-700">Business Cards</p>
               <p class="text-gray-500 text-sm mt-2">Premium Quality</p>
             </div>
           </div>
-          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center animate-fade-in-up scroll-trigger animation-delay-400">
+          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center">
             <div class="text-center p-4">
               <i class="fas fa-tshirt text-4xl text-red-600 mb-3"></i>
               <p class="font-semibold text-gray-700">Cloth Printing</p>
@@ -199,14 +198,14 @@
       <div class="container mx-auto px-4">
         <div class="flex flex-col lg:flex-row items-center gap-12">
           <div class="lg:w-1/2">
-            <h2 class="text-4xl font-bold text-gray-900 mb-6 animate-fade-in-up scroll-trigger">About Printify</h2>
-            <p class="text-lg text-gray-600 mb-4 animate-fade-in-up scroll-trigger animation-delay-100">
+            <h2 class="text-4xl font-bold text-gray-900 mb-6">About Printify</h2>
+            <p class="text-lg text-gray-600 mb-4">
               Printify is your trusted printing partner in Marad, Kochi, with years of experience in delivering high-quality printing solutions for businesses and individuals alike.
             </p>
-            <p class="text-lg text-gray-600 mb-6 animate-fade-in-up scroll-trigger animation-delay-200">
+            <p class="text-lg text-gray-600 mb-6">
               We specialize in a wide range of printing services including flex printing, business cards, cloth printing, mug printing, and laser printing. Our commitment to quality, attention to detail, and customer satisfaction sets us apart in the industry.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 animate-fade-in-up scroll-trigger animation-delay-300">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               <div class="flex items-center">
                 <i class="fas fa-check-circle text-red-600 mr-3"></i>
                 <span class="text-gray-700">Premium Quality Materials</span>
@@ -224,7 +223,7 @@
                 <span class="text-gray-700">Expert Design Assistance</span>
               </div>
             </div>
-            <div class="animate-fade-in-up scroll-trigger animation-delay-400">
+            <div>
               <a 
                 href="#contact" 
                 class="px-6 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 inline-block"
@@ -234,7 +233,7 @@
             </div>
           </div>
           <div class="lg:w-1/2">
-            <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-red-50 to-red-100 h-96 flex items-center justify-center animate-fade-in-up scroll-trigger animation-delay-500">
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-red-50 to-red-100 h-96 flex items-center justify-center">
               <div class="text-center p-8">
                 <i class="fas fa-print text-6xl text-red-600 mb-4"></i>
                 <h3 class="text-2xl font-bold text-gray-900 mb-2">Our Printing Facility</h3>
@@ -250,18 +249,18 @@
     <section id="contact" class="py-20 bg-gradient-to-b from-red-50 to-white relative overflow-hidden">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up scroll-trigger">Contact Printify</h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-up scroll-trigger animation-delay-100">Get in touch with us for all your printing needs in Kochi</p>
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Contact Printify</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">Get in touch with us for all your printing needs in Kochi</p>
         </div>
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <!-- Contact Information -->
           <div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-6 animate-fade-in-up scroll-trigger">Get In Touch</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h3>
             
             <div class="space-y-6">
               <!-- Email -->
-              <div class="flex items-start animate-fade-in-up scroll-trigger animation-delay-200">
+              <div class="flex items-start">
                 <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0">
                   <i class="fas fa-envelope text-red-600"></i>
                 </div>
@@ -278,7 +277,7 @@
               </div>
               
               <!-- Phone -->
-              <div class="flex items-start animate-fade-in-up scroll-trigger animation-delay-300">
+              <div class="flex items-start">
                 <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0">
                   <i class="fas fa-phone text-red-600"></i>
                 </div>
@@ -295,7 +294,7 @@
               </div>
               
               <!-- WhatsApp -->
-              <div class="flex items-start animate-fade-in-up scroll-trigger animation-delay-400">
+              <div class="flex items-start">
                 <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0">
                   <i class="fab fa-whatsapp text-red-600"></i>
                 </div>
@@ -313,7 +312,7 @@
               </div>
               
               <!-- Address -->
-              <div class="flex items-start animate-fade-in-up scroll-trigger animation-delay-500">
+              <div class="flex items-start">
                 <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0">
                   <i class="fas fa-map-marker-alt text-red-600"></i>
                 </div>
@@ -332,7 +331,7 @@
             </div>
             
             <!-- Social Media -->
-            <div class="mt-8 animate-fade-in-up scroll-trigger animation-delay-600">
+            <div class="mt-8">
               <h4 class="font-semibold text-gray-900 mb-4">Follow Us</h4>
               <div class="flex space-x-4">
                 <a 
@@ -350,7 +349,7 @@
           </div>
           
           <!-- Map -->
-          <div class="rounded-2xl overflow-hidden shadow-xl h-96 animate-fade-in-up scroll-trigger animation-delay-300">
+          <div class="rounded-2xl overflow-hidden shadow-xl h-96">
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.129007575663!2d76.32299027495682!3d9.938886100000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0873d7cc22ea2b%3A0x9c9b6b8b6b8b6b8b!2sPrintify!5e0!3m2!1sen!2sin!4v1698765432100!5m2!1sen!2sin" 
               width="100%" 
@@ -369,9 +368,9 @@
     <!-- CTA Section -->
     <section class="py-20 bg-gradient-to-r from-red-600 to-red-800 text-white relative overflow-hidden">
       <div class="container mx-auto px-4 text-center relative z-10">
-        <h2 class="text-4xl font-bold mb-6 animate-fade-in-up scroll-trigger">Ready to Bring Your Ideas to Life?</h2>
-        <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90 animate-fade-in-up scroll-trigger animation-delay-100">Contact us today for a free quote on your next printing project</p>
-        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-up scroll-trigger animation-delay-200">
+        <h2 class="text-4xl font-bold mb-6">Ready to Bring Your Ideas to Life?</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">Contact us today for a free quote on your next printing project</p>
+        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
           <a 
             :href="contactInfo.whatsapp" 
             target="_blank"
@@ -458,14 +457,14 @@
 </template>
 
 <script setup>
-// ✅ Import ref and onMounted from Vue
+// Import ref and onMounted from Vue
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-// ✅ State
+// State
 const scrolled = ref(false)
 const mobileMenuOpen = ref(false)
 
-// ✅ Data
+// Data
 const navItems = [
   { name: 'Services', href: '#services' },
   { name: 'Portfolio', href: '#portfolio' },
@@ -535,94 +534,22 @@ const socialMedia = [
   { name: 'Email', icon: 'fas fa-envelope', link: 'mailto:Printifycochin@gmail.com' }
 ]
 
-// ✅ SEO Meta
-useSeoMeta({
-  title: 'Printify - Premium Printing Services in Marad, Kochi',
-  description: 'Printify offers high-quality printing services in Marad, Kochi including flex printing, business cards, cloth printing, mug printing, and laser printing.',
-  ogTitle: 'Printify - Premium Printing Services in Marad, Kochi',
-  ogDescription: 'Your trusted printing partner in Kochi for all your printing needs with exceptional quality and attention to detail.',
-  ogImage: '/images/printify-og.jpg',
-  twitterCard: 'summary_large_image'
-})
-
-// ✅ JSON-LD Structured Data
-useHead({
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'LocalBusiness',
-        name: 'Printify',
-        description: 'Premium Printing Services in Marad, Kochi',
-        url: 'https://yourwebsite.com',
-        telephone: '+91-8129067610',
-        email: 'Printifycochin@gmail.com',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: 'Marad',
-          addressLocality: 'Kochi',
-          addressRegion: 'Kerala',
-          postalCode: '682304',
-          addressCountry: 'IN'
-        },
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: '9.9388861',
-          longitude: '76.3255651'
-        },
-        openingHours: 'Mo-Sa 09:00-19:00',
-        sameAs: socialMedia.map(s => s.link)
-      })
-    }
-  ]
-})
-
-// ✅ Scroll Handler
+// Scroll Handler
 const handleScroll = () => {
   if (process.client) {
     scrolled.value = window.scrollY > 50
-    
-    // Trigger scroll animations
-    const scrollTriggers = document.querySelectorAll('.scroll-trigger')
-    scrollTriggers.forEach(element => {
-      const elementTop = element.getBoundingClientRect().top
-      const elementVisible = 150
-      
-      if (elementTop < window.innerHeight - elementVisible) {
-        element.classList.add('animate-scroll-trigger')
-      }
-    })
   }
 }
 
-// ✅ Lifecycle Hooks
+// Lifecycle Hooks
 onMounted(() => {
-  // Only run on client side
   if (process.client) {
-    // Set up scroll listener
     window.addEventListener('scroll', handleScroll, { passive: true })
-    
-    // Trigger initial scroll check
     handleScroll()
-    
-    // Add scroll-trigger class to elements that should animate on scroll
-    setTimeout(() => {
-      const scrollTriggers = document.querySelectorAll('.scroll-trigger')
-      scrollTriggers.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top
-        const elementVisible = 150
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-          element.classList.add('animate-scroll-trigger')
-        }
-      })
-    }, 100)
   }
 })
 
 onBeforeUnmount(() => {
-  // Clean up event listeners
   if (process.client) {
     window.removeEventListener('scroll', handleScroll)
   }
@@ -636,72 +563,40 @@ onBeforeUnmount(() => {
   -webkit-text-fill-color: transparent;
 }
 
-/* Custom animations using Tailwind */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) rotate(var(--tw-rotate, 0));
-  }
-  50% {
-    transform: translateY(-10px) rotate(var(--tw-rotate, 0));
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
+/* Use Tailwind's built-in animations */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
 
-.animation-delay-100 {
+.animate-delay-100 {
   animation-delay: 100ms;
 }
 
-.animation-delay-200 {
+.animate-delay-200 {
   animation-delay: 200ms;
 }
 
-.animation-delay-300 {
+.animate-delay-300 {
   animation-delay: 300ms;
 }
 
-.animation-delay-400 {
+.animate-delay-400 {
   animation-delay: 400ms;
 }
 
-.animation-delay-500 {
+.animate-delay-500 {
   animation-delay: 500ms;
 }
 
-.animation-delay-600 {
+.animate-delay-600 {
   animation-delay: 600ms;
 }
 
-.animation-delay-700 {
+.animate-delay-700 {
   animation-delay: 700ms;
-}
-
-/* Scroll trigger animation */
-.scroll-trigger {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.animate-scroll-trigger {
-  opacity: 1;
-  transform: translateY(0);
 }
 </style>
