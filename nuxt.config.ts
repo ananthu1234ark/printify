@@ -30,9 +30,7 @@ export default defineNuxtConfig({
   },
 
   // ✅ Add this section
-  nitro: {
-    preset: "netlify-static", // <-- this fixes your build
-  },
+ 
 });
 
 //yeee
