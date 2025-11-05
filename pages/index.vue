@@ -504,137 +504,122 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      isMenuOpen: false,
-      scrolled: false,
-      navItems: [
-        { name: 'Services', href: '#services' },
-        { name: 'Portfolio', href: '#portfolio' },
-        { name: 'About', href: '#about' },
-        { name: 'Contact', href: '#contact' }
-      ],
-      services: [
-        {
-          title: 'banner Printing',
-          description: 'High-quality large format printing for banners, hoardings, and signage.',
-          icon: 'fas fa-scroll',
-          color: 'bg-gradient-to-br from-red-600 to-red-800',
-          link: '#contact'
-        },
-        {
-          title: 'Business Cards',
-          description: 'Professionally designed and printed business cards that make a lasting impression.',
-          icon: 'fas fa-id-card',
-          color: 'bg-gradient-to-br from-red-600 to-red-800',
-          link: '#contact'
-        },
-        {
-          title: 'Cloth Printing',
-          description: 'Custom printing on various fabrics for uniforms, promotional items, and more.',
-          icon: 'fas fa-tshirt',
-          color: 'bg-gradient-to-br from-red-600 to-red-800',
-          link: '#contact'
-        },
-        {
-          title: 'Mug Printing',
-          description: 'Personalized mug printing perfect for gifts, promotions, and special occasions.',
-          icon: 'fas fa-mug-hot',
-          color: 'bg-gradient-to-br from-red-600 to-red-800',
-          link: '#contact'
-        },
-        {
-          title: 'Laser Printing',
-          description: 'Precision laser printing for documents, brochures, and high-quality prints.',
-          icon: 'fas fa-bolt',
-          color: 'bg-gradient-to-br from-red-600 to-red-800',
-          link: '#contact'
-        },
-        {
-          title: 'Design Services',
-          description: 'Creative design solutions to bring your ideas to life before printing.',
-          icon: 'fas fa-palette',
-          color: 'bg-gradient-to-br from-red-600 to-red-800',
-          link: '#contact'
-        }
-      ],
-      portfolioItems: [
-        {
-          title: 'Project Gallery',
-          subtitle: 'Coming Soon',
-          icon: 'fas fa-images'
-        },
-        {
-          title: 'Business Cards',
-          subtitle: 'Premium Quality',
-          icon: 'fas fa-id-card'
-        },
-        {
-          title: 'Cloth Printing',
-          subtitle: 'Custom Designs',
-          icon: 'fas fa-tshirt'
-        },
-        {
-          title: 'Banner Prints',
-          subtitle: 'Large Format',
-          icon: 'fas fa-scroll'
-        },
-        {
-          title: 'Mug Printing',
-          subtitle: 'Personalized',
-          icon: 'fas fa-mug-hot'
-        },
-        {
-          title: 'Laser Prints',
-          subtitle: 'High Precision',
-          icon: 'fas fa-bolt'
-        }
-      ],
-      contactInfo: {
-        email: 'Printifycochin@gmail.com',
-        emailSubject: 'We have a print question',
-        phone: '+91 8129067610',
-        whatsapp: 'https://wa.me/+918129067610',
-        address: 'Marad, Kochi, Kerala, India - 682304',
-        mapLink: 'https://maps.app.goo.gl/7gVxi4LpEVajh84U8'
-      },
-      socialMedia: [
-        { name: 'Facebook', icon: 'fab fa-facebook-f', link: 'https://facebook.com/printify_cochin' },
-        { name: 'Instagram', icon: 'fab fa-instagram', link: 'https://instagram.com/printify_cochin' },
-        { name: 'Twitter', icon: 'fab fa-twitter', link: 'https://twitter.com/printify_cochin' },
-        { name: 'WhatsApp', icon: 'fab fa-whatsapp', link: 'https://wa.me/+918129067610' },
-        { name: 'Email', icon: 'fas fa-envelope', link: 'mailto:Printifycochin@gmail.com' }
-      ]
-    }
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+// State
+const isMenuOpen = ref(false)
+const scrolled = ref(false)
+
+// Navigation Items
+const navItems = [
+  { name: 'Services', href: '#services' },
+  { name: 'Portfolio', href: '#portfolio' },
+  { name: 'About', href: '#about' },
+  { name: 'Contact', href: '#contact' }
+]
+
+// Services
+const services = [
+  {
+    title: 'Banner Printing',
+    description: 'High-quality large format printing for banners, hoardings, and signage.',
+    icon: 'fas fa-scroll',
+    color: 'bg-gradient-to-br from-red-600 to-red-800',
+    link: '#contact'
   },
-  mounted() {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', this.handleScroll)
-      this.handleScroll()
-    }
+  {
+    title: 'Business Cards',
+    description: 'Professionally designed and printed business cards that make a lasting impression.',
+    icon: 'fas fa-id-card',
+    color: 'bg-gradient-to-br from-red-600 to-red-800',
+    link: '#contact'
   },
-  beforeUnmount() {
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('scroll', this.handleScroll)
-    }
+  {
+    title: 'Cloth Printing',
+    description: 'Custom printing on various fabrics for uniforms, promotional items, and more.',
+    icon: 'fas fa-tshirt',
+    color: 'bg-gradient-to-br from-red-600 to-red-800',
+    link: '#contact'
   },
-  methods: {
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen
-    },
-    closeMenu() {
-      this.isMenuOpen = false
-    },
-    handleScroll() {
-      if (typeof window !== 'undefined') {
-        this.scrolled = window.scrollY > 50
-      }
-    }
+  {
+    title: 'Mug Printing',
+    description: 'Personalized mug printing perfect for gifts, promotions, and special occasions.',
+    icon: 'fas fa-mug-hot',
+    color: 'bg-gradient-to-br from-red-600 to-red-800',
+    link: '#contact'
+  },
+  {
+    title: 'Laser Printing',
+    description: 'Precision laser printing for documents, brochures, and high-quality prints.',
+    icon: 'fas fa-bolt',
+    color: 'bg-gradient-to-br from-red-600 to-red-800',
+    link: '#contact'
+  },
+  {
+    title: 'Design Services',
+    description: 'Creative design solutions to bring your ideas to life before printing.',
+    icon: 'fas fa-palette',
+    color: 'bg-gradient-to-br from-red-600 to-red-800',
+    link: '#contact'
+  }
+]
+
+// Portfolio Items
+const portfolioItems = [
+  { title: 'Project Gallery', subtitle: 'Coming Soon', icon: 'fas fa-images' },
+  { title: 'Business Cards', subtitle: 'Premium Quality', icon: 'fas fa-id-card' },
+  { title: 'Cloth Printing', subtitle: 'Custom Designs', icon: 'fas fa-tshirt' },
+  { title: 'Banner Prints', subtitle: 'Large Format', icon: 'fas fa-scroll' },
+  { title: 'Mug Printing', subtitle: 'Personalized', icon: 'fas fa-mug-hot' },
+  { title: 'Laser Prints', subtitle: 'High Precision', icon: 'fas fa-bolt' }
+]
+
+// Contact Info
+const contactInfo = {
+  email: 'Printifycochin@gmail.com',
+  emailSubject: 'We have a print question',
+  phone: '+91 8129067610',
+  whatsapp: 'https://wa.me/+918129067610',
+  address: 'Marad, Kochi, Kerala, India - 682304',
+  mapLink: 'https://maps.app.goo.gl/7gVxi4LpEVajh84U8'
+}
+
+// Social Media
+const socialMedia = [
+  { name: 'Facebook', icon: 'fab fa-facebook-f', link: 'https://facebook.com/printify_cochin' },
+  { name: 'Instagram', icon: 'fab fa-instagram', link: 'https://instagram.com/printify_cochin' },
+  { name: 'Twitter', icon: 'fab fa-twitter', link: 'https://twitter.com/printify_cochin' },
+  { name: 'WhatsApp', icon: 'fab fa-whatsapp', link: 'https://wa.me/+918129067610' },
+  { name: 'Email', icon: 'fas fa-envelope', link: 'mailto:Printifycochin@gmail.com' }
+]
+
+// Methods
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
+const closeMenu = () => {
+  isMenuOpen.value = false
+}
+
+const handleScroll = () => {
+  if (typeof window !== 'undefined') {
+    scrolled.value = window.scrollY > 50
   }
 }
+
+// Lifecycle hooks
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+  handleScroll()
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
+
 
 <style scoped>
 .text-gradient {
