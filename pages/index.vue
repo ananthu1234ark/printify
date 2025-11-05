@@ -7,7 +7,7 @@
     >
       <div class="container mx-auto px-4 flex justify-between items-center">
         <div class="flex items-center space-x-3">
-           <img src="https://i.postimg.cc/vHgKVXSV/png.png" alt="My Image" class="w-[150px]" />
+           <img src="https://i.postimg.cc/zBwg6mBt/png.png" alt="My Image" class="w-[150px]" />
         </div>
         
         <!-- Desktop Navigation -->
@@ -443,7 +443,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div class="md:col-span-2 animate-fade-in-up">
             <div class="flex items-center space-x-3 mb-4">
-              <img src="https://i.postimg.cc/vHgKVXSV/png.png" alt="My Image" class="w-[300px]" />
+              <img src="https://i.postimg.cc/zBwg6mBt/png.png" alt="My Image" class="w-[300px]" />
             </div>
             <p class="text-gray-400 mb-4 max-w-md">
               Your trusted printing partner in Marad, Kochi. We provide high-quality printing services with attention to detail and customer satisfaction.
