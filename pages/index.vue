@@ -576,8 +576,8 @@ const services = [
 const contactInfo = {
   email: 'Printifycochin@gmail.com',
   emailSubject: 'We have a print question',
-  phone: '+91 4324354554',
-  whatsapp: 'https://wa.me/914324354554',
+  phone: '+91 8129067610',
+  whatsapp: 'https://wa.me/+918129067610',
   address: 'Marad, Kochi, Kerala, India - 682304',
   mapLink: 'https://maps.app.goo.gl/7gVxi4LpEVajh84U8',
   coordinates: 'W8QG+G8 Kochi, Kerala'
@@ -602,7 +602,7 @@ const socialMedia = [
   {
     name: 'WhatsApp',
     icon: 'fab fa-whatsapp',
-    link: 'https://wa.me/914324354554'
+    link: 'https://wa.me/+918129067610'
   },
   {
     name: 'Email',
@@ -632,7 +632,7 @@ useHead({
         name: 'Printify',
         description: 'Premium Printing Services in Marad, Kochi',
         url: 'https://yourwebsite.com',
-        telephone: '+91-4324354554',
+        telephone: '+91-8129067610',
         email: 'Printifycochin@gmail.com',
         address: {
           '@type': 'PostalAddress',
