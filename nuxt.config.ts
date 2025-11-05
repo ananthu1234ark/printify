@@ -34,3 +34,5 @@ export default defineNuxtConfig({
     preset: "netlify-static", // <-- this fixes your build
   },
 });
+
+//yeee
