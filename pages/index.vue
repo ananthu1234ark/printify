@@ -8,10 +8,8 @@
       <div class="container mx-auto px-4 flex justify-between items-center">
         <div class="flex items-center space-x-3">
           <div class="w-12 h-12 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center shadow-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <title>Printify Logo</title>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
+            <img src="/file.svg" alt="Printify Logo" class="h-6 w-6" />
+
           </div>
           <h1 class="text-2xl font-bold text-gray-900">Printify</h1>
         </div>
@@ -38,9 +36,37 @@
           Get Quote
         </a>
         
-        <button class="md:hidden text-gray-700" @click="mobileMenuOpen = !mobileMenuOpen" aria-label="Toggle mobile menu">
-          <i class="fas fa-bars text-xl"></i>
-        </button>
+        <button class="md:hidden text-gray-700" @click="toggleMobileMenu" aria-label="Toggle mobile menu">
+         <i :class="['text-xl transition-transform duration-300', mobileMenuOpen ? 'fas fa-times rotate-90' : 'fas fa-bars']"></i> </button>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div 
+        class="md:hidden bg-white border-t border-gray-200 transition-all duration-500 overflow-hidden"
+        :class="mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'"
+      >
+        <div class="container mx-auto px-4 py-4">
+          <div class="flex flex-col space-y-4">
+            <a 
+              v-for="(item, index) in navItems" 
+              :key="index"
+              :href="item.href" 
+              class="font-medium text-gray-700 hover:text-red-600 transition-all duration-300 py-2 border-b border-gray-100"
+              @click="mobileMenuOpen = false"
+            >
+              {{ item.name }}
+            </a>
+            <a 
+              :href="contactInfo.whatsapp" 
+              target="_blank"
+              class="px-4 py-2 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-lg font-medium text-center mt-2"
+              @click="mobileMenuOpen = false"
+            >
+              <i class="fab fa-whatsapp mr-2"></i>
+              Get Quote
+            </a>
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -51,31 +77,31 @@
           <div class="lg:w-1/2 mb-12 lg:mb-0">
             <div class="relative">
               <!-- Animated badge -->
-              <div class="inline-flex items-center px-4 py-2 bg-red-100 text-red-700 rounded-full font-medium mb-6 shadow-sm animate-fade-in">
+              <div class="inline-flex items-center px-4 py-2 bg-red-100 text-red-700 rounded-full font-medium mb-6 shadow-sm animate-fade-in-up">
                 <span class="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse"></span>
                 Premium Printing Services in Marad, Kochi
               </div>
               
-              <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in animate-delay-100">
+              <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in-up animate-delay-100">
                 Your Vision, 
                 <span class="text-gradient">Printed Perfectly</span>
               </h1>
               
-              <p class="text-xl text-gray-600 mb-8 max-w-lg animate-fade-in animate-delay-200">
+              <p class="text-xl text-gray-600 mb-8 max-w-lg animate-fade-in-up animate-delay-200">
                 From business cards to large format flex prints, we bring your ideas to life with exceptional quality and attention to detail.
               </p>
               
-              <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in animate-delay-300">
+              <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-up animate-delay-300">
                 <a 
                   href="#services"
-                  class="px-8 py-3.5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center"
+                  class="px-8 py-3.5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center animate-pulse-once"
                 >
                   <span>Explore Services</span>
-                  <i class="fas fa-arrow-right ml-2"></i>
+                  <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
                 </a>
                 <a 
                   href="#portfolio"
-                  class="px-8 py-3.5 bg-white text-gray-800 border border-gray-300 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+                  class="px-8 py-3.5 bg-white text-gray-800 border border-gray-300 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center hover:border-red-300"
                 >
                   <i class="fas fa-play-circle mr-2 text-red-600"></i>
                   <span>View Portfolio</span>
@@ -87,36 +113,36 @@
           <div class="lg:w-1/2 relative">
             <div class="relative h-96 lg:h-[500px]">
               <!-- Floating elements -->
-              <div class="absolute top-10 left-4 lg:left-10 w-40 h-52 bg-white rounded-xl shadow-2xl transform -rotate-6 border-2 border-red-100 animate-float animate-delay-400">
+              <div class="absolute top-10 left-4 lg:left-10 w-40 h-52 bg-white rounded-xl shadow-2xl transform -rotate-6 border-2 border-red-100 animate-float-slow animate-delay-400">
                 <div class="h-full flex items-center justify-center p-4">
                   <div class="text-center">
-                    <i class="fas fa-id-card text-3xl text-red-600 mb-3"></i>
+                    <i class="fas fa-id-card text-3xl text-red-600 mb-3 animate-bounce-slow"></i>
                     <p class="font-semibold text-gray-700">Cards</p>
                   </div>
                 </div>
               </div>
               
-              <div class="absolute top-20 right-4 lg:right-10 w-32 h-32 bg-white rounded-full shadow-2xl transform rotate-12 border-2 border-red-100 animate-float animate-delay-500">
+              <div class="absolute top-20 right-4 lg:right-10 w-32 h-32 bg-white rounded-full shadow-2xl transform rotate-12 border-2 border-red-100 animate-float-medium animate-delay-500">
                 <div class="h-full flex items-center justify-center">
                   <div class="text-center">
-                    <i class="fas fa-mug-hot text-2xl text-red-600"></i>
+                    <i class="fas fa-mug-hot text-2xl text-red-600 animate-wiggle"></i>
                   </div>
                 </div>
               </div>
               
-              <div class="absolute bottom-20 left-8 lg:left-16 w-36 h-36 bg-white rounded-xl shadow-2xl transform rotate-3 border-2 border-red-100 animate-float animate-delay-600">
+              <div class="absolute bottom-20 left-8 lg:left-16 w-36 h-36 bg-white rounded-xl shadow-2xl transform rotate-3 border-2 border-red-100 animate-float-slow animate-delay-600">
                 <div class="h-full flex items-center justify-center">
                   <div class="text-center">
-                    <i class="fas fa-tshirt text-2xl text-red-600 mb-2"></i>
+                    <i class="fas fa-tshirt text-2xl text-red-600 mb-2 animate-pulse-slow"></i>
                     <p class="font-semibold text-gray-700">Cloth</p>
                   </div>
                 </div>
               </div>
               
-              <div class="absolute bottom-10 right-8 lg:right-16 w-44 h-24 bg-white rounded-xl shadow-2xl transform -rotate-6 border-2 border-red-100 animate-float animate-delay-700">
+              <div class="absolute bottom-10 right-8 lg:right-16 w-44 h-24 bg-white rounded-xl shadow-2xl transform -rotate-6 border-2 border-red-100 animate-float-medium animate-delay-700">
                 <div class="h-full flex items-center justify-center">
                   <div class="text-center">
-                    <i class="fas fa-bolt text-2xl text-red-600 mb-1"></i>
+                    <i class="fas fa-bolt text-2xl text-red-600 mb-1 animate-ping-slow"></i>
                     <p class="font-semibold text-gray-700">Laser Print</p>
                   </div>
                 </div>
@@ -129,8 +155,13 @@
 
     <!-- Services Section -->
     <section id="services" class="py-20 bg-gradient-to-b from-white to-red-50 relative overflow-hidden">
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-red-100 rounded-full opacity-20 animate-pulse-slow"></div>
+        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-red-100 rounded-full opacity-20 animate-pulse-slow animate-delay-1000"></div>
+      </div>
+      
       <div class="container mx-auto px-4 relative z-10">
-        <div class="text-center mb-16">
+        <div class="text-center mb-16 animate-fade-in-up">
           <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Printing Services</h2>
           <p class="text-xl text-gray-600 max-w-2xl mx-auto">We offer a comprehensive range of printing solutions for all your needs</p>
         </div>
@@ -139,20 +170,22 @@
           <div 
             v-for="(service, index) in services" 
             :key="index" 
-            class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 group overflow-hidden relative"
+            class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 group overflow-hidden relative animate-fade-in-up"
+            :style="`animation-delay: ${index * 100}ms`"
           >
-            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6 relative z-10" 
+            <div class="absolute inset-0 bg-gradient-to-br from-red-600 to-red-800 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 transition-transform duration-500" 
                  :class="service.color">
               <i :class="service.icon" class="text-2xl text-white"></i>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10">{{ service.title }}</h3>
+            <h3 class="text-xl font-bold text-gray-900 mb-3 relative z-10 group-hover:text-red-700 transition-colors duration-300">{{ service.title }}</h3>
             <p class="text-gray-600 mb-4 relative z-10">{{ service.description }}</p>
             <a 
               :href="service.link" 
-              class="text-red-600 font-medium flex items-center group-hover:translate-x-1 transition-transform duration-300 relative z-10"
+              class="text-red-600 font-medium flex items-center group-hover:translate-x-1 transition-all duration-300 relative z-10"
             >
               Learn more
-              <i class="fas fa-arrow-right ml-1"></i>
+              <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform duration-300"></i>
             </a>
           </div>
         </div>
@@ -161,32 +194,28 @@
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="py-20 bg-white relative overflow-hidden">
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-20 animate-pulse"></div>
+      </div>
+      
       <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
+        <div class="text-center mb-16 animate-fade-in-up">
           <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Portfolio</h2>
           <p class="text-xl text-gray-600 max-w-2xl mx-auto">See examples of our recent work and printing projects</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center">
-            <div class="text-center p-4">
-              <i class="fas fa-images text-4xl text-red-600 mb-3"></i>
-              <p class="font-semibold text-gray-700">Project Gallery</p>
-              <p class="text-gray-500 text-sm mt-2">Coming Soon</p>
-            </div>
-          </div>
-          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center">
-            <div class="text-center p-4">
-              <i class="fas fa-id-card text-4xl text-red-600 mb-3"></i>
-              <p class="font-semibold text-gray-700">Business Cards</p>
-              <p class="text-gray-500 text-sm mt-2">Premium Quality</p>
-            </div>
-          </div>
-          <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center">
-            <div class="text-center p-4">
-              <i class="fas fa-tshirt text-4xl text-red-600 mb-3"></i>
-              <p class="font-semibold text-gray-700">Cloth Printing</p>
-              <p class="text-gray-500 text-sm mt-2">Custom Designs</p>
+          <div 
+            v-for="(item, index) in portfolioItems" 
+            :key="index"
+            class="bg-gray-100 rounded-xl h-64 flex items-center justify-center overflow-hidden group relative animate-fade-in-up"
+            :style="`animation-delay: ${index * 150}ms`"
+          >
+            <div class="absolute inset-0 bg-gradient-to-br from-red-600/10 to-red-800/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="text-center p-4 relative z-10 transform group-hover:scale-105 transition-transform duration-500">
+              <i :class="item.icon" class="text-4xl text-red-600 mb-3"></i>
+              <p class="font-semibold text-gray-700">{{ item.title }}</p>
+              <p class="text-gray-500 text-sm mt-2">{{ item.subtitle }}</p>
             </div>
           </div>
         </div>
@@ -197,7 +226,7 @@
     <section id="about" class="py-20 bg-white relative overflow-hidden">
       <div class="container mx-auto px-4">
         <div class="flex flex-col lg:flex-row items-center gap-12">
-          <div class="lg:w-1/2">
+          <div class="lg:w-1/2 animate-fade-in-left">
             <h2 class="text-4xl font-bold text-gray-900 mb-6">About Printify</h2>
             <p class="text-lg text-gray-600 mb-4">
               Printify is your trusted printing partner in Marad, Kochi, with years of experience in delivering high-quality printing solutions for businesses and individuals alike.
@@ -206,36 +235,37 @@
               We specialize in a wide range of printing services including flex printing, business cards, cloth printing, mug printing, and laser printing. Our commitment to quality, attention to detail, and customer satisfaction sets us apart in the industry.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-              <div class="flex items-center">
+              <div class="flex items-center animate-fade-in-up" style="animation-delay: 100ms">
                 <i class="fas fa-check-circle text-red-600 mr-3"></i>
                 <span class="text-gray-700">Premium Quality Materials</span>
               </div>
-              <div class="flex items-center">
+              <div class="flex items-center animate-fade-in-up" style="animation-delay: 200ms">
                 <i class="fas fa-check-circle text-red-600 mr-3"></i>
                 <span class="text-gray-700">Fast Turnaround Times</span>
               </div>
-              <div class="flex items-center">
+              <div class="flex items-center animate-fade-in-up" style="animation-delay: 300ms">
                 <i class="fas fa-check-circle text-red-600 mr-3"></i>
                 <span class="text-gray-700">Competitive Pricing</span>
               </div>
-              <div class="flex items-center">
+              <div class="flex items-center animate-fade-in-up" style="animation-delay: 400ms">
                 <i class="fas fa-check-circle text-red-600 mr-3"></i>
                 <span class="text-gray-700">Expert Design Assistance</span>
               </div>
             </div>
-            <div>
+            <div class="animate-fade-in-up" style="animation-delay: 500ms">
               <a 
                 href="#contact" 
-                class="px-6 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 inline-block"
+                class="px-6 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 inline-block transform hover:-translate-y-1"
               >
                 Learn More About Us
               </a>
             </div>
           </div>
-          <div class="lg:w-1/2">
-            <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-red-50 to-red-100 h-96 flex items-center justify-center">
-              <div class="text-center p-8">
-                <i class="fas fa-print text-6xl text-red-600 mb-4"></i>
+          <div class="lg:w-1/2 animate-fade-in-right">
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-red-50 to-red-100 h-96 flex items-center justify-center group">
+              <div class="absolute inset-0 bg-gradient-to-br from-red-600/5 to-red-800/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div class="text-center p-8 relative z-10 transform group-hover:scale-105 transition-transform duration-500">
+                <i class="fas fa-print text-6xl text-red-600 mb-4 animate-bounce-slow"></i>
                 <h3 class="text-2xl font-bold text-gray-900 mb-2">Our Printing Facility</h3>
                 <p class="text-gray-600">State-of-the-art equipment in Marad, Kochi</p>
               </div>
@@ -247,22 +277,27 @@
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gradient-to-b from-red-50 to-white relative overflow-hidden">
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-red-100 rounded-full opacity-10 -translate-y-32 translate-x-32 animate-pulse-slow"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-red-100 rounded-full opacity-10 translate-y-32 -translate-x-32 animate-pulse-slow animate-delay-1000"></div>
+      </div>
+      
       <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
+        <div class="text-center mb-16 animate-fade-in-up">
           <h2 class="text-4xl font-bold text-gray-900 mb-4">Contact Printify</h2>
           <p class="text-xl text-gray-600 max-w-2xl mx-auto">Get in touch with us for all your printing needs in Kochi</p>
         </div>
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <!-- Contact Information -->
-          <div>
+          <div class="animate-fade-in-left">
             <h3 class="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h3>
             
             <div class="space-y-6">
               <!-- Email -->
-              <div class="flex items-start">
-                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0">
-                  <i class="fas fa-envelope text-red-600"></i>
+              <div class="flex items-start animate-fade-in-up" style="animation-delay: 100ms">
+                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0 group hover:scale-110 transition-transform duration-300">
+                  <i class="fas fa-envelope text-red-600 group-hover:animate-wiggle"></i>
                 </div>
                 <div>
                   <h4 class="font-semibold text-gray-900 mb-1">Email Us</h4>
@@ -277,9 +312,9 @@
               </div>
               
               <!-- Phone -->
-              <div class="flex items-start">
-                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0">
-                  <i class="fas fa-phone text-red-600"></i>
+              <div class="flex items-start animate-fade-in-up" style="animation-delay: 200ms">
+                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0 group hover:scale-110 transition-transform duration-300">
+                  <i class="fas fa-phone text-red-600 group-hover:animate-wiggle"></i>
                 </div>
                 <div>
                   <h4 class="font-semibold text-gray-900 mb-1">Call Us</h4>
@@ -294,9 +329,9 @@
               </div>
               
               <!-- WhatsApp -->
-              <div class="flex items-start">
-                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0">
-                  <i class="fab fa-whatsapp text-red-600"></i>
+              <div class="flex items-start animate-fade-in-up" style="animation-delay: 300ms">
+                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0 group hover:scale-110 transition-transform duration-300">
+                  <i class="fab fa-whatsapp text-red-600 group-hover:animate-wiggle"></i>
                 </div>
                 <div>
                   <h4 class="font-semibold text-gray-900 mb-1">WhatsApp</h4>
@@ -312,9 +347,9 @@
               </div>
               
               <!-- Address -->
-              <div class="flex items-start">
-                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0">
-                  <i class="fas fa-map-marker-alt text-red-600"></i>
+              <div class="flex items-start animate-fade-in-up" style="animation-delay: 400ms">
+                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mr-4 flex-shrink-0 group hover:scale-110 transition-transform duration-300">
+                  <i class="fas fa-map-marker-alt text-red-600 group-hover:animate-wiggle"></i>
                 </div>
                 <div>
                   <h4 class="font-semibold text-gray-900 mb-1">Visit Our Store</h4>
@@ -331,7 +366,7 @@
             </div>
             
             <!-- Social Media -->
-            <div class="mt-8">
+            <div class="mt-8 animate-fade-in-up" style="animation-delay: 500ms">
               <h4 class="font-semibold text-gray-900 mb-4">Follow Us</h4>
               <div class="flex space-x-4">
                 <a 
@@ -339,8 +374,9 @@
                   :key="index"
                   :href="social.link" 
                   target="_blank"
-                  class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-red-600 hover:text-white transition-all duration-300"
+                  class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-red-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1"
                   :aria-label="`Follow us on ${social.name}`"
+                  :style="`animation-delay: ${index * 100}ms`"
                 >
                   <i :class="social.icon"></i>
                 </a>
@@ -349,7 +385,7 @@
           </div>
           
           <!-- Map -->
-          <div class="rounded-2xl overflow-hidden shadow-xl h-96">
+          <div class="rounded-2xl overflow-hidden shadow-xl h-96 animate-fade-in-right">
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.129007575663!2d76.32299027495682!3d9.938886100000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0873d7cc22ea2b%3A0x9c9b6b8b6b8b6b8b!2sPrintify!5e0!3m2!1sen!2sin!4v1698765432100!5m2!1sen!2sin" 
               width="100%" 
@@ -367,21 +403,27 @@
 
     <!-- CTA Section -->
     <section class="py-20 bg-gradient-to-r from-red-600 to-red-800 text-white relative overflow-hidden">
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-white opacity-20 animate-pulse"></div>
+        <div class="absolute -top-20 -right-20 w-40 h-40 bg-white rounded-full opacity-10 animate-ping-slow"></div>
+        <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-white rounded-full opacity-10 animate-ping-slow animate-delay-1000"></div>
+      </div>
+      
       <div class="container mx-auto px-4 text-center relative z-10">
-        <h2 class="text-4xl font-bold mb-6">Ready to Bring Your Ideas to Life?</h2>
-        <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">Contact us today for a free quote on your next printing project</p>
-        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <h2 class="text-4xl font-bold mb-6 animate-fade-in-up">Ready to Bring Your Ideas to Life?</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90 animate-fade-in-up animate-delay-100">Contact us today for a free quote on your next printing project</p>
+        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-up animate-delay-200">
           <a 
             :href="contactInfo.whatsapp" 
             target="_blank"
-            class="px-8 py-3.5 bg-white text-red-600 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 inline-block"
+            class="px-8 py-3.5 bg-white text-red-600 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 inline-block animate-pulse-once"
           >
             Get Free Quote
           </a>
           <a 
             :href="contactInfo.mapLink" 
             target="_blank"
-            class="px-8 py-3.5 bg-transparent border border-white text-white rounded-full font-medium hover:bg-white/10 transition-all duration-300 inline-block"
+            class="px-8 py-3.5 bg-transparent border border-white text-white rounded-full font-medium hover:bg-white/10 transition-all duration-300 inline-block transform hover:-translate-y-1"
           >
             Visit Our Store
           </a>
@@ -393,14 +435,11 @@
     <footer class="bg-gray-900 text-white py-12">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div class="md:col-span-2">
+          <div class="md:col-span-2 animate-fade-in-up">
             <div class="flex items-center space-x-3 mb-4">
-              <div class="w-10 h-10 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <title>Printify Logo</title>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
-              </div>
+              
+               <img src="/public/logo.jpg" alt="Hero" class="w-[100px] shadow-lg" />
+              
               <h3 class="text-xl font-bold">Printify</h3>
             </div>
             <p class="text-gray-400 mb-4 max-w-md">
@@ -412,7 +451,7 @@
                 :key="index"
                 :href="social.link" 
                 target="_blank"
-                class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-all duration-300"
+                class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1"
                 :aria-label="`Follow us on ${social.name}`"
               >
                 <i :class="social.icon"></i>
@@ -420,7 +459,7 @@
             </div>
           </div>
           
-          <div>
+          <div class="animate-fade-in-up" style="animation-delay: 100ms">
             <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
             <ul class="space-y-2">
               <li v-for="(item, index) in navItems" :key="index">
@@ -429,7 +468,7 @@
             </ul>
           </div>
           
-          <div>
+          <div class="animate-fade-in-up" style="animation-delay: 200ms">
             <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
             <ul class="space-y-2 text-gray-400">
               <li class="flex items-start">
@@ -448,7 +487,7 @@
           </div>
         </div>
         
-        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 animate-fade-in-up" style="animation-delay: 300ms">
           <p>&copy; {{ new Date().getFullYear() }} Printify. All rights reserved.</p>
         </div>
       </div>
@@ -517,6 +556,39 @@ const services = [
   }
 ]
 
+const portfolioItems = [
+  {
+    title: 'Project Gallery',
+    subtitle: 'Coming Soon',
+    icon: 'fas fa-images'
+  },
+  {
+    title: 'Business Cards',
+    subtitle: 'Premium Quality',
+    icon: 'fas fa-id-card'
+  },
+  {
+    title: 'Cloth Printing',
+    subtitle: 'Custom Designs',
+    icon: 'fas fa-tshirt'
+  },
+  {
+    title: 'Flex Prints',
+    subtitle: 'Large Format',
+    icon: 'fas fa-scroll'
+  },
+  {
+    title: 'Mug Printing',
+    subtitle: 'Personalized',
+    icon: 'fas fa-mug-hot'
+  },
+  {
+    title: 'Laser Prints',
+    subtitle: 'High Precision',
+    icon: 'fas fa-bolt'
+  }
+]
+
 const contactInfo = {
   email: 'Printifycochin@gmail.com',
   emailSubject: 'We have a print question',
@@ -527,12 +599,17 @@ const contactInfo = {
 }
 
 const socialMedia = [
-  { name: 'Facebook', icon: 'fab fa-facebook-f', link: 'https://facebook.com/printifykochi' },
-  { name: 'Instagram', icon: 'fab fa-instagram', link: 'https://instagram.com/printifykochi' },
-  { name: 'Twitter', icon: 'fab fa-twitter', link: 'https://twitter.com/printifykochi' },
+  { name: 'Facebook', icon: 'fab fa-facebook-f', link: 'https://facebook.com/printify_cochin' },
+  { name: 'Instagram', icon: 'fab fa-instagram', link: 'https://instagram.com/printify_cochin' },
+  { name: 'Twitter', icon: 'fab fa-twitter', link: 'https://twitter.com/printify_cochin' },
   { name: 'WhatsApp', icon: 'fab fa-whatsapp', link: 'https://wa.me/+918129067610' },
   { name: 'Email', icon: 'fas fa-envelope', link: 'mailto:Printifycochin@gmail.com' }
 ]
+
+// Methods
+const toggleMobileMenu = () => {
+  mobileMenuOpen.value = !mobileMenuOpen.value
+}
 
 // Scroll Handler
 const handleScroll = () => {
@@ -563,13 +640,149 @@ onBeforeUnmount(() => {
   -webkit-text-fill-color: transparent;
 }
 
-/* Use Tailwind's built-in animations */
-.animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+/* Enhanced Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-6deg);
+  }
+}
+
+@keyframes floatMedium {
+  0%, 100% {
+    transform: translateY(0) rotate(12deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(12deg);
+  }
+}
+
+@keyframes bounceSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes pingSlow {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes pulseOnce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: floatMedium 4s ease-in-out infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 3s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 1s ease-in-out infinite;
+}
+
+.animate-ping-slow {
+  animation: pingSlow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-once {
+  animation: pulseOnce 2s ease-in-out;
 }
 
 .animate-delay-100 {
@@ -598,5 +811,9 @@ onBeforeUnmount(() => {
 
 .animate-delay-700 {
   animation-delay: 700ms;
+}
+
+.animate-delay-1000 {
+  animation-delay: 1000ms;
 }
 </style>
