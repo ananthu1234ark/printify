@@ -8,8 +8,7 @@
       <div class="container mx-auto px-4 flex justify-between items-center">
         <div class="flex items-center space-x-3">
           <div class="w-12 h-12 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center shadow-lg">
-            <img src="/file.svg" alt="Printify Logo" class="h-6 w-6" />
-
+            <i class="fas fa-print text-white text-lg"></i>
           </div>
           <h1 class="text-2xl font-bold text-gray-900">Printify</h1>
         </div>
@@ -30,28 +29,39 @@
         <a 
           :href="contactInfo.whatsapp" 
           target="_blank"
-          class="px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center"
+          class="hidden md:flex px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 items-center"
         >
           <i class="fab fa-whatsapp mr-2"></i>
           Get Quote
         </a>
         
-        <button class="md:hidden text-gray-700" @click="toggleMobileMenu" aria-label="Toggle mobile menu">
-         <i :class="['text-xl transition-transform duration-300', mobileMenuOpen ? 'fas fa-times rotate-90' : 'fas fa-bars']"></i> </button>
+        <!-- Mobile Menu Button -->
+        <button 
+          class="md:hidden text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300" 
+          @click="toggleMobileMenu" 
+          aria-label="Toggle mobile menu"
+        >
+          <i 
+            :class="[
+              'text-xl transition-all duration-300', 
+              mobileMenuOpen ? 'fas fa-times scale-110' : 'fas fa-bars'
+            ]"
+          ></i>
+        </button>
       </div>
       
       <!-- Mobile Menu -->
       <div 
         class="md:hidden bg-white border-t border-gray-200 transition-all duration-500 overflow-hidden"
-        :class="mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'"
+        :class="mobileMenuOpen ? 'max-h-96 opacity-100 py-4' : 'max-h-0 opacity-0 py-0'"
       >
-        <div class="container mx-auto px-4 py-4">
+        <div class="container mx-auto px-4">
           <div class="flex flex-col space-y-4">
             <a 
               v-for="(item, index) in navItems" 
               :key="index"
               :href="item.href" 
-              class="font-medium text-gray-700 hover:text-red-600 transition-all duration-300 py-2 border-b border-gray-100"
+              class="font-medium text-gray-700 hover:text-red-600 transition-all duration-300 py-3 border-b border-gray-100 hover:pl-2"
               @click="mobileMenuOpen = false"
             >
               {{ item.name }}
@@ -59,7 +69,7 @@
             <a 
               :href="contactInfo.whatsapp" 
               target="_blank"
-              class="px-4 py-2 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-lg font-medium text-center mt-2"
+              class="px-4 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-lg font-medium text-center mt-2 hover:shadow-lg transition-all duration-300"
               @click="mobileMenuOpen = false"
             >
               <i class="fab fa-whatsapp mr-2"></i>
@@ -88,20 +98,20 @@
               </h1>
               
               <p class="text-xl text-gray-600 mb-8 max-w-lg animate-fade-in-up animate-delay-200">
-                From business cards to large format flex prints, we bring your ideas to life with exceptional quality and attention to detail.
+                From business cards to large format banner prints, we bring your ideas to life with exceptional quality and attention to detail.
               </p>
               
               <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-up animate-delay-300">
                 <a 
                   href="#services"
-                  class="px-8 py-3.5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center animate-pulse-once"
+                  class="px-8 py-3.5 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center animate-pulse-once group"
                 >
                   <span>Explore Services</span>
                   <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
                 </a>
                 <a 
                   href="#portfolio"
-                  class="px-8 py-3.5 bg-white text-gray-800 border border-gray-300 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center hover:border-red-300"
+                  class="px-8 py-3.5 bg-white text-gray-800 border border-gray-300 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center hover:border-red-300 group"
                 >
                   <i class="fas fa-play-circle mr-2 text-red-600"></i>
                   <span>View Portfolio</span>
@@ -182,7 +192,7 @@
             <p class="text-gray-600 mb-4 relative z-10">{{ service.description }}</p>
             <a 
               :href="service.link" 
-              class="text-red-600 font-medium flex items-center group-hover:translate-x-1 transition-all duration-300 relative z-10"
+              class="text-red-600 font-medium flex items-center group-hover:translate-x-1 transition-all duration-300 relative z-10 group"
             >
               Learn more
               <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform duration-300"></i>
@@ -232,7 +242,7 @@
               Printify is your trusted printing partner in Marad, Kochi, with years of experience in delivering high-quality printing solutions for businesses and individuals alike.
             </p>
             <p class="text-lg text-gray-600 mb-6">
-              We specialize in a wide range of printing services including flex printing, business cards, cloth printing, mug printing, and laser printing. Our commitment to quality, attention to detail, and customer satisfaction sets us apart in the industry.
+              We specialize in a wide range of printing services including banner printing, business cards, cloth printing, mug printing, and laser printing. Our commitment to quality, attention to detail, and customer satisfaction sets us apart in the industry.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               <div class="flex items-center animate-fade-in-up" style="animation-delay: 100ms">
@@ -437,9 +447,9 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div class="md:col-span-2 animate-fade-in-up">
             <div class="flex items-center space-x-3 mb-4">
-              
-               <img src="/public/logo.jpg" alt="Hero" class="w-[100px] shadow-lg" />
-              
+              <div class="w-12 h-12 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center shadow-lg">
+                <i class="fas fa-print text-white text-lg"></i>
+              </div>
               <h3 class="text-xl font-bold">Printify</h3>
             </div>
             <p class="text-gray-400 mb-4 max-w-md">
@@ -513,8 +523,8 @@ const navItems = [
 
 const services = [
   {
-    title: 'Flex Printing',
-    description: 'High-quality large format flex printing for banners, hoardings, and signage.',
+    title: 'banner Printing',
+    description: 'High-quality large format printing for banners, hoardings, and signage.',
     icon: 'fas fa-scroll',
     color: 'bg-gradient-to-br from-red-600 to-red-800',
     link: '#contact'
@@ -573,7 +583,7 @@ const portfolioItems = [
     icon: 'fas fa-tshirt'
   },
   {
-    title: 'Flex Prints',
+    title: 'Banner Prints',
     subtitle: 'Large Format',
     icon: 'fas fa-scroll'
   },
@@ -609,25 +619,26 @@ const socialMedia = [
 // Methods
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value
+  console.log('Mobile menu toggled:', mobileMenuOpen.value) // Debug line
 }
 
 // Scroll Handler
 const handleScroll = () => {
-  if (process.client) {
+  if (typeof window !== 'undefined') {
     scrolled.value = window.scrollY > 50
   }
 }
 
 // Lifecycle Hooks
 onMounted(() => {
-  if (process.client) {
+  if (typeof window !== 'undefined') {
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
   }
 })
 
 onBeforeUnmount(() => {
-  if (process.client) {
+  if (typeof window !== 'undefined') {
     window.removeEventListener('scroll', handleScroll)
   }
 })
