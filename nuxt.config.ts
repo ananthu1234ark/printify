@@ -54,9 +54,4 @@ export default defineNuxtConfig({
   },
 
   // Runtime config
-  runtimeConfig: {
-    public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://your-site.netlify.app'
-    }
-  }
 })
