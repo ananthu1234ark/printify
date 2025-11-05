@@ -13,6 +13,7 @@
           <h1 class="text-2xl font-bold text-gray-900">Printify</h1>
         </div>
         
+        <!-- Desktop Navigation -->
         <div class="hidden md:flex space-x-8">
           <a 
             v-for="(item, index) in navItems" 
@@ -35,25 +36,23 @@
           Get Quote
         </a>
         
-        <!-- Mobile Menu Button -->
+        <!-- Hamburger Button - CORRECTED -->
         <button 
-          class="md:hidden text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300" 
-          @click="toggleMobileMenu" 
+          @click="toggleMenu" 
+          class="md:hidden focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
           aria-label="Toggle mobile menu"
         >
-          <i 
-            :class="[
-              'text-xl transition-all duration-300', 
-              mobileMenuOpen ? 'fas fa-times scale-110' : 'fas fa-bars'
-            ]"
-          ></i>
+          <div class="w-6 h-0.5 bg-gray-700 mb-1 transition-transform" :class="{ 'rotate-45 translate-y-2': isMenuOpen }"></div>
+          <div class="w-6 h-0.5 bg-gray-700 mb-1 transition-opacity" :class="{ 'opacity-0': isMenuOpen }"></div>
+          <div class="w-6 h-0.5 bg-gray-700 transition-transform" :class="{ '-rotate-45 -translate-y-1': isMenuOpen }"></div>
         </button>
       </div>
       
-      <!-- Mobile Menu -->
-      <div 
-        class="md:hidden bg-white border-t border-gray-200 transition-all duration-500 overflow-hidden"
-        :class="mobileMenuOpen ? 'max-h-96 opacity-100 py-4' : 'max-h-0 opacity-0 py-0'"
+      <!-- Mobile Menu - CORRECTED -->
+      <div
+        v-show="isMenuOpen"
+        class="md:hidden bg-white border-t border-gray-200 transition-all duration-300 overflow-hidden"
+        :class="isMenuOpen ? 'max-h-96 opacity-100 py-4' : 'max-h-0 opacity-0 py-0'"
       >
         <div class="container mx-auto px-4">
           <div class="flex flex-col space-y-4">
@@ -61,8 +60,8 @@
               v-for="(item, index) in navItems" 
               :key="index"
               :href="item.href" 
+              @click="closeMenu"
               class="font-medium text-gray-700 hover:text-red-600 transition-all duration-300 py-3 border-b border-gray-100 hover:pl-2"
-              @click="mobileMenuOpen = false"
             >
               {{ item.name }}
             </a>
@@ -70,7 +69,7 @@
               :href="contactInfo.whatsapp" 
               target="_blank"
               class="px-4 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-lg font-medium text-center mt-2 hover:shadow-lg transition-all duration-300"
-              @click="mobileMenuOpen = false"
+              @click="closeMenu"
             >
               <i class="fab fa-whatsapp mr-2"></i>
               Get Quote
@@ -505,143 +504,136 @@
   </div>
 </template>
 
-<script setup>
-// Import ref and onMounted from Vue
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-
-// State
-const scrolled = ref(false)
-const mobileMenuOpen = ref(false)
-
-// Data
-const navItems = [
-  { name: 'Services', href: '#services' },
-  { name: 'Portfolio', href: '#portfolio' },
-  { name: 'About', href: '#about' },
-  { name: 'Contact', href: '#contact' }
-]
-
-const services = [
-  {
-    title: 'banner Printing',
-    description: 'High-quality large format printing for banners, hoardings, and signage.',
-    icon: 'fas fa-scroll',
-    color: 'bg-gradient-to-br from-red-600 to-red-800',
-    link: '#contact'
+<script>
+export default {
+  data() {
+    return {
+      isMenuOpen: false,
+      scrolled: false,
+      navItems: [
+        { name: 'Services', href: '#services' },
+        { name: 'Portfolio', href: '#portfolio' },
+        { name: 'About', href: '#about' },
+        { name: 'Contact', href: '#contact' }
+      ],
+      services: [
+        {
+          title: 'banner Printing',
+          description: 'High-quality large format printing for banners, hoardings, and signage.',
+          icon: 'fas fa-scroll',
+          color: 'bg-gradient-to-br from-red-600 to-red-800',
+          link: '#contact'
+        },
+        {
+          title: 'Business Cards',
+          description: 'Professionally designed and printed business cards that make a lasting impression.',
+          icon: 'fas fa-id-card',
+          color: 'bg-gradient-to-br from-red-600 to-red-800',
+          link: '#contact'
+        },
+        {
+          title: 'Cloth Printing',
+          description: 'Custom printing on various fabrics for uniforms, promotional items, and more.',
+          icon: 'fas fa-tshirt',
+          color: 'bg-gradient-to-br from-red-600 to-red-800',
+          link: '#contact'
+        },
+        {
+          title: 'Mug Printing',
+          description: 'Personalized mug printing perfect for gifts, promotions, and special occasions.',
+          icon: 'fas fa-mug-hot',
+          color: 'bg-gradient-to-br from-red-600 to-red-800',
+          link: '#contact'
+        },
+        {
+          title: 'Laser Printing',
+          description: 'Precision laser printing for documents, brochures, and high-quality prints.',
+          icon: 'fas fa-bolt',
+          color: 'bg-gradient-to-br from-red-600 to-red-800',
+          link: '#contact'
+        },
+        {
+          title: 'Design Services',
+          description: 'Creative design solutions to bring your ideas to life before printing.',
+          icon: 'fas fa-palette',
+          color: 'bg-gradient-to-br from-red-600 to-red-800',
+          link: '#contact'
+        }
+      ],
+      portfolioItems: [
+        {
+          title: 'Project Gallery',
+          subtitle: 'Coming Soon',
+          icon: 'fas fa-images'
+        },
+        {
+          title: 'Business Cards',
+          subtitle: 'Premium Quality',
+          icon: 'fas fa-id-card'
+        },
+        {
+          title: 'Cloth Printing',
+          subtitle: 'Custom Designs',
+          icon: 'fas fa-tshirt'
+        },
+        {
+          title: 'Banner Prints',
+          subtitle: 'Large Format',
+          icon: 'fas fa-scroll'
+        },
+        {
+          title: 'Mug Printing',
+          subtitle: 'Personalized',
+          icon: 'fas fa-mug-hot'
+        },
+        {
+          title: 'Laser Prints',
+          subtitle: 'High Precision',
+          icon: 'fas fa-bolt'
+        }
+      ],
+      contactInfo: {
+        email: 'Printifycochin@gmail.com',
+        emailSubject: 'We have a print question',
+        phone: '+91 8129067610',
+        whatsapp: 'https://wa.me/+918129067610',
+        address: 'Marad, Kochi, Kerala, India - 682304',
+        mapLink: 'https://maps.app.goo.gl/7gVxi4LpEVajh84U8'
+      },
+      socialMedia: [
+        { name: 'Facebook', icon: 'fab fa-facebook-f', link: 'https://facebook.com/printify_cochin' },
+        { name: 'Instagram', icon: 'fab fa-instagram', link: 'https://instagram.com/printify_cochin' },
+        { name: 'Twitter', icon: 'fab fa-twitter', link: 'https://twitter.com/printify_cochin' },
+        { name: 'WhatsApp', icon: 'fab fa-whatsapp', link: 'https://wa.me/+918129067610' },
+        { name: 'Email', icon: 'fas fa-envelope', link: 'mailto:Printifycochin@gmail.com' }
+      ]
+    }
   },
-  {
-    title: 'Business Cards',
-    description: 'Professionally designed and printed business cards that make a lasting impression.',
-    icon: 'fas fa-id-card',
-    color: 'bg-gradient-to-br from-red-600 to-red-800',
-    link: '#contact'
+  mounted() {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', this.handleScroll)
+      this.handleScroll()
+    }
   },
-  {
-    title: 'Cloth Printing',
-    description: 'Custom printing on various fabrics for uniforms, promotional items, and more.',
-    icon: 'fas fa-tshirt',
-    color: 'bg-gradient-to-br from-red-600 to-red-800',
-    link: '#contact'
+  beforeUnmount() {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('scroll', this.handleScroll)
+    }
   },
-  {
-    title: 'Mug Printing',
-    description: 'Personalized mug printing perfect for gifts, promotions, and special occasions.',
-    icon: 'fas fa-mug-hot',
-    color: 'bg-gradient-to-br from-red-600 to-red-800',
-    link: '#contact'
-  },
-  {
-    title: 'Laser Printing',
-    description: 'Precision laser printing for documents, brochures, and high-quality prints.',
-    icon: 'fas fa-bolt',
-    color: 'bg-gradient-to-br from-red-600 to-red-800',
-    link: '#contact'
-  },
-  {
-    title: 'Design Services',
-    description: 'Creative design solutions to bring your ideas to life before printing.',
-    icon: 'fas fa-palette',
-    color: 'bg-gradient-to-br from-red-600 to-red-800',
-    link: '#contact'
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen
+    },
+    closeMenu() {
+      this.isMenuOpen = false
+    },
+    handleScroll() {
+      if (typeof window !== 'undefined') {
+        this.scrolled = window.scrollY > 50
+      }
+    }
   }
-]
-
-const portfolioItems = [
-  {
-    title: 'Project Gallery',
-    subtitle: 'Coming Soon',
-    icon: 'fas fa-images'
-  },
-  {
-    title: 'Business Cards',
-    subtitle: 'Premium Quality',
-    icon: 'fas fa-id-card'
-  },
-  {
-    title: 'Cloth Printing',
-    subtitle: 'Custom Designs',
-    icon: 'fas fa-tshirt'
-  },
-  {
-    title: 'Banner Prints',
-    subtitle: 'Large Format',
-    icon: 'fas fa-scroll'
-  },
-  {
-    title: 'Mug Printing',
-    subtitle: 'Personalized',
-    icon: 'fas fa-mug-hot'
-  },
-  {
-    title: 'Laser Prints',
-    subtitle: 'High Precision',
-    icon: 'fas fa-bolt'
-  }
-]
-
-const contactInfo = {
-  email: 'Printifycochin@gmail.com',
-  emailSubject: 'We have a print question',
-  phone: '+91 8129067610',
-  whatsapp: 'https://wa.me/+918129067610',
-  address: 'Marad, Kochi, Kerala, India - 682304',
-  mapLink: 'https://maps.app.goo.gl/7gVxi4LpEVajh84U8'
 }
-
-const socialMedia = [
-  { name: 'Facebook', icon: 'fab fa-facebook-f', link: 'https://facebook.com/printify_cochin' },
-  { name: 'Instagram', icon: 'fab fa-instagram', link: 'https://instagram.com/printify_cochin' },
-  { name: 'Twitter', icon: 'fab fa-twitter', link: 'https://twitter.com/printify_cochin' },
-  { name: 'WhatsApp', icon: 'fab fa-whatsapp', link: 'https://wa.me/+918129067610' },
-  { name: 'Email', icon: 'fas fa-envelope', link: 'mailto:Printifycochin@gmail.com' }
-]
-
-// Methods
-const toggleMobileMenu = () => {
-  mobileMenuOpen.value = !mobileMenuOpen.value
-  console.log('Mobile menu toggled:', mobileMenuOpen.value) // Debug line
-}
-
-// Scroll Handler
-const handleScroll = () => {
-  if (typeof window !== 'undefined') {
-    scrolled.value = window.scrollY > 50
-  }
-}
-
-// Lifecycle Hooks
-onMounted(() => {
-  if (typeof window !== 'undefined') {
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll()
-  }
-})
-
-onBeforeUnmount(() => {
-  if (typeof window !== 'undefined') {
-    window.removeEventListener('scroll', handleScroll)
-  }
-})
 </script>
 
 <style scoped>
@@ -649,6 +641,14 @@ onBeforeUnmount(() => {
   background: linear-gradient(to right, #dc2626, #7f1d1d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.transition-transform {
+  transition: transform 0.3s ease-in-out;
+}
+
+.transition-opacity {
+  transition: opacity 0.3s ease-in-out;
 }
 
 /* Enhanced Animations */
