@@ -2,61 +2,45 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
+
+  // Enable Nuxt DevTools
   devtools: { enabled: true },
-  
-  // Add these essential configurations
-  ssr: false, // Important for static hosting
-  target: 'static',
-  
-  // SEO and App config
+
+  // Global CSS file (you’ll create this next)
+  css: ["~/assets/css/main.css"],
+
+  // App head configuration
   app: {
     head: {
-      title: 'Printify - Premium Printing Services in Marad, Kochi',
-      htmlAttrs: { lang: 'en' },
+      title: "Printify | Printing Services in Marad, Kochi",
       meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { 
-          name: 'description', 
-          content: 'Printify offers high-quality printing services in Marad, Kochi including flex printing, business cards, cloth printing, mug printing, and laser printing.' 
-        }
+        { name: "description", content: "Premium printing services including flex, business cards, cloth, mug, and laser printing in Marad, Kochi." },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
       ],
       link: [
-        { 
-          rel: 'stylesheet', 
-          href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' 
+        // Font Awesome CDN
+        {
+          rel: "stylesheet",
+          href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css",
         },
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        // Optional: Google Fonts
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+        },
       ],
-      script: [
-        {
-          src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js'
-        },
-        {
-          src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js'
-        }
-      ]
-    }
+    },
   },
 
-  css: ['~/assets/css/main.css'],
-  
+  // Vite Configuration
   vite: {
-    plugins: [
-      tailwindcss(),
-    ],
-    // Add build optimizations
-    build: {
-      rollupOptions: {
-        external: ['gsap'] // GSAP is loaded via CDN
-      }
-    }
+    plugins: [tailwindcss()],
   },
 
-  // Runtime config
-  runtimeConfig: {
-    public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://printifycochin.netlify.app/'
-    }
-  }
-})
+  // Enable smooth scroll behavior globally
+  router: {
+    options: {
+      scrollBehaviorType: "smooth",
+    },
+  },
+});
