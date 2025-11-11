@@ -15,7 +15,11 @@ export default defineNuxtConfig({
       link: [
         { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" },
         { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" },
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          href: 'https://i.ibb.co/cKJb3HKL/favicon.png'
+        },
       ],
     },
   },
